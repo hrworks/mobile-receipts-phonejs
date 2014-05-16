@@ -1,7 +1,6 @@
 HRworksReceipt.receipt = function (params) {
 	var dateBoxValue = ko.observable(new Date());
 	if (typeof params.id == 'undefined') {
-		console.log("1");
 		var viewModel = {
 			dataSource: '',
 			currenciesSource: HRworksReceipt.getCurrencies(),
@@ -13,15 +12,9 @@ HRworksReceipt.receipt = function (params) {
 			amount: '',
 			currency: '',
 			receiptKind: '',
-			kindOfPayment: ''
-<<<<<<< HEAD
-			
-		}	
-=======
+			kindOfPayment: ''	
 		} 
->>>>>>> 46531833483a578ec91e6b2da6b8b2688161c624
 	} else {
-		console.log("2");
 		viewModel = {
 			dataSource: HRworksReceipt.getReceiptById(params.id),
 			currenciesSource: HRworksReceipt.getCurrencies(),

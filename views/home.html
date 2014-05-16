@@ -1,7 +1,22 @@
 ﻿<div data-options="dxView : { name: 'home', title: 'Home' } " >
+	<div data-bind="dxCommand: { title: 'Create', id: 'create', icon: 'plus', action: '#receipt'}"></div>
     <div class="home-view" data-options="dxContent : { targetPlaceholder: 'content' } " >
-		<div data-bind="dxList: { dataSource: dataSource }">
-			<div data-options="dxTemplate : { name: 'item' }" data-bind="text: name, dxAction: '#products/{id}'"></div>
+		<div class="list" data-bind="dxList: {
+				dataSource: dataSource,
+				autoPagingEnabled: true,
+				pullRefreshEnabled: pullRefresh,
+				height: '75%'
+			}">
+			<div class="listItem" data-options="dxTemplate : { name: 'item' }" data-bind=" dxAction: '#receipt/{guid}'">
+				<div class="left">	
+					<p><b data-bind="text: text"></b></p>
+					<p data-bind="text: getReceiptKindDescription(receiptKind)"></p>
+				</div>
+				<div class="right">
+					<p data-bind="text: yyyymmdd_to_date(date)"></p>
+					<p data-bind="text: amount + ' ' + currency"></p>
+				</div>	
+			</div>
 		</div>
     </div>
 </div>

@@ -1,14 +1,14 @@
 ﻿(function() {
     "use strict";
 
-    var MyApp = window.MyApp = { };
+    var HRworksReceipt = window.HRworksReceipt = { };
     
     // Uncomment the line below to disable platform-specific look and feel and to use the Generic theme for all devices
     // DevExpress.devices.current({ platform: "generic" });
 
     $(function() {
-        MyApp.app = new DevExpress.framework.html.HtmlApplication({
-            namespace: MyApp,
+        HRworksReceipt.app = new DevExpress.framework.html.HtmlApplication({
+            namespace: HRworksReceipt,
             
             navigationType: "navbar",
             navigation: [
@@ -24,9 +24,8 @@
               }
             ]
         });
-        
-        MyApp.app.router.register(":view/:id", { view: "home", id: undefined });
-        MyApp.app.navigate();
+        HRworksReceipt.initUserData();
+        HRworksReceipt.app.router.register(":view/:id", { view: "home", id: undefined });
+        HRworksReceipt.app.navigate();
     });
-    
 })();

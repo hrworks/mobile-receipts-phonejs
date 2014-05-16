@@ -14,8 +14,12 @@ HRworksReceipt.receipt = function (params) {
 			currency: '',
 			receiptKind: '',
 			kindOfPayment: ''
+<<<<<<< HEAD
 			
 		}	
+=======
+		} 
+>>>>>>> 46531833483a578ec91e6b2da6b8b2688161c624
 	} else {
 		console.log("2");
 		viewModel = {

@@ -1,4 +1,4 @@
-MyApp.products = function (params) {
+HRworksReceipt.products = function (params) {
     var viewModel = {
         searchString: ko.observable(''),
         find: function () {

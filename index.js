@@ -13,12 +13,12 @@
             navigationType: "navbar",
             navigation: [
               {
-                title: "Receipts",
+                title: "Belege",
                 action: "#home",
                 icon: "home"
               },
               {
-                title: "About",
+                title: "Infos",
                 action: "#about",
                 icon: "info"
               }

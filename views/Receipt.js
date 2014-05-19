@@ -12,7 +12,26 @@ HRworksReceipt.receipt = function (params) {
 			amount: '',
 			currency: '',
 			receiptKind: '',
-			kindOfPayment: ''	
+			kindOfPayment: '',
+			saveForm: function() {
+				var receipt = [
+						{
+						"date": $("#dateInputDate").dxDateBox('option','value').toString(),
+						"text": $("#txtInputText").dxTextBox('option','value'),
+						"amount": $("#numbInputAmount").dxTextBox('option','value'),
+						"guid": createGuid(),
+						"currency": $("#selectCurrency").dxSelectBox('option', 'value'),
+						"receiptKind": $("#selectReceiptKind").dxSelectBox('option','value'),
+						"kindOfPayment": $("#selectKindOfPayment").dxSelectBox('option','value'),
+						"timeStamp": Date()
+						}
+					];
+					console.log(receipt);
+					HRworksReceipt.insertReceipt(receipt);
+					HRworksReceipt.app.navigate('' /*{ root: true }*/);
+
+					
+			}		
 		} 
 	} else {
 		viewModel = {
@@ -26,14 +45,29 @@ HRworksReceipt.receipt = function (params) {
 			amount: HRworksReceipt.getReceiptById(params.id).amount,
 			currency: HRworksReceipt.getReceiptById(params.id).currency,
 			receiptKind: HRworksReceipt.getReceiptById(params.id).receiptKind,
-			kindOfPayment: HRworksReceipt.getReceiptById(params.id).kindOfPayment
-
+			kindOfPayment: HRworksReceipt.getReceiptById(params.id).kindOfPayment,
+			saveForm: function() {
+			var receipt = [
+						{
+						"date": $("#dateInputDate").dxDateBox('option','value').toString(),
+						"text": $("#txtInputText").dxTextBox('option','value'),
+						"amount": $("#numbInputAmount").dxTextBox('option','value'),
+						"currency": $("#selectCurrency").dxSelectBox('option', 'value'),
+						"receiptKind": $("#selectReceiptKind").dxSelectBox('option','value'),
+						"kindOfPayment": $("#selectKindOfPayment").dxSelectBox('option','value'),
+						"timeStamp": Date(),
+						"guid": params.id
+						}
+					];
+					HRworksReceipt.updateReceipt(params.id,receipt);
+					HRworksReceipt.app.navigate('', { direction: 'backward', root: true });
+				}
 		}
 	}
 	function S4() {
 		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
 	}
-	function guid() {
+	function createGuid() {
 		return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 	}
 	return viewModel;

@@ -1,7 +1,24 @@
 ﻿HRworksReceipt.home = function (params) {
     var viewModel = {
 		pullRefresh: ko.observable(true),
-        dataSource: HRworksReceipt.getReceipts()
+        dataSource: HRworksReceipt.getReceipts(),
+		viewShown: function (e) {
+				console.log(e);
+            if (e.direction == 'backward') {      
+				console.log("1a");
+				viewModel.dataSource([]);
+                viewModel.dataSource(HRworksReceipt.getReceipts());
+            }else{
+				console.log("1b");
+				}
+        },
+		 onloadview: function () {
+            
+				console.log("2");
+				viewModel.dataSource = [];
+                viewModel.dataSource = HRworksReceipt.getReceipts();
+            
+        }
     };
 	getReceiptKind = function(receiptKindId) {
 		for(var i=0; i < HRworksReceipt.db.receiptKinds.length; i++){

@@ -13,19 +13,19 @@
 	
 
     function insertReceipt(receipt) {
-        receiptsArray.push(receipt);
-        saveReceipts();
+        var localReceiptArray = getReceipts();
+		localReceiptArray.push(receipt[0]);
+        saveReceipts(localReceiptArray);
     }
 
-    function updateReceipt(id, receipt) {
-        var index,
-            array = receiptsArray();
-        for (index = 0; index < array.length; index++) {
-            if (array[index].id === id)
+    function updateReceipt(guid, receipt) {
+        var localReceiptArray = getReceipts();
+        for (var index = 0; index < localReceiptArray.length; index++) {
+            if (localReceiptArray[index].guid == guid)
                 break;
         }
-        receiptsArray.splice(index, 1, receipt);
-        saveReceipts();
+        localReceiptArray.splice(index, 1, receipt[0]);
+        saveReceipts(localReceiptArray);
     }
 
     function deleteReceipt(id) {
@@ -35,8 +35,8 @@
         saveReceipts();
     }
 
-    function saveReceipts() {
-        localStorage.setItem(RECEIPTS_KEY, JSON.stringify(receiptsArray()));
+    function saveReceipts(localReceiptArray) {
+        localStorage.setItem(RECEIPTS_KEY, JSON.stringify(localReceiptArray));
     }
 	
 	function getReceipts() {

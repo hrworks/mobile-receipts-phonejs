@@ -1,7 +1,7 @@
 "use strict";
 
 !function($, DX, wo, undefined) {
-	
+
     var DATA_VERSION_KEY = "hrworksreceipts-version",
         DATA_VERSION = "1",
         KINDSOFPAYMENT_KEY = "hrworksreceipts-kindsOfPayment",
@@ -10,12 +10,10 @@
 		PERSON_KEY = "hrworksreceipts-person",
 		RECEIPTS_KEY = "hrworksreceipts-receipts",
 		receiptsArray;
-	
 
-    function insertReceipt(receipt) {
-        var localReceiptArray = getReceipts();
-		localReceiptArray.push(receipt[0]);
-        saveReceipts(localReceiptArray);
+    function insertReceipt(receipts) {
+		receiptsArray.push(receipt[0]);
+        saveReceipts();
     }
 
     function updateReceipt(guid, receipt) {
@@ -38,7 +36,7 @@
     function saveReceipts(localReceiptArray) {
         localStorage.setItem(RECEIPTS_KEY, JSON.stringify(localReceiptArray));
     }
-	
+
 	function getReceipts() {
 		return JSON.parse(localStorage.getItem(RECEIPTS_KEY));
 	}
@@ -72,7 +70,6 @@
 			localStorage.setItem(RECEIPTS_KEY, JSON.stringify(receiptsArray));
 		}
     }
-
     function clearUserData() {
         var localStorageKeys = [
             DATA_VERSION,
@@ -88,9 +85,8 @@
             localStorage.removeItem(this);
         });
     }
-
+	
     $.extend(HRworksReceipt, {
-
         insertReceipt: insertReceipt,
         updateReceipt: updateReceipt,
         deleteReceipt: deleteReceipt,
@@ -99,11 +95,9 @@
 		getCurrencies: getCurrencies,
 		getReceiptKinds: getReceiptKinds,
 		getKindsOfPayment: getKindsOfPayment,
-		
+
         initUserData: initUserData,
         clearUserData: clearUserData
         
-    });
-
-    
+    });  
 }(jQuery, DevExpress, HRworksReceipt);

@@ -2,7 +2,6 @@ HRworksReceipt.receipt = function (params) {
 	var dateBoxValue = ko.observable(new Date());
 	if (typeof params.id == 'undefined') {
 		var viewModel = {
-			dataSource: '',
 			currenciesSource: HRworksReceipt.getCurrencies(),
 			receiptKindsSource: HRworksReceipt.getReceiptKinds(),
 			kindsOfPaymentSource: HRworksReceipt.getKindsOfPayment(),
@@ -16,7 +15,7 @@ HRworksReceipt.receipt = function (params) {
 			saveForm: function() {
 				var receipt = [
 						{
-						"date": $("#dateInputDate").dxDateBox('option','value').toString(),
+						"date": dateToString($("#dateInputDate").dxDateBox('option','value')),
 						"text": $("#txtInputText").dxTextBox('option','value'),
 						"amount": $("#numbInputAmount").dxTextBox('option','value'),
 						"guid": createGuid(),
@@ -28,9 +27,7 @@ HRworksReceipt.receipt = function (params) {
 					];
 					console.log(receipt);
 					HRworksReceipt.insertReceipt(receipt);
-					HRworksReceipt.app.navigate('' /*{ root: true }*/);
-
-					
+					HRworksReceipt.app.navigate('home', { root: true });
 			}		
 		} 
 	} else {
@@ -40,7 +37,7 @@ HRworksReceipt.receipt = function (params) {
 			receiptKindsSource: HRworksReceipt.getReceiptKinds(),
 			kindsOfPaymentSource: HRworksReceipt.getKindsOfPayment(),
 			text: HRworksReceipt.getReceiptById(params.id).text,
-			date: yyyymmdd_to_date(HRworksReceipt.getReceiptById(params.id).date),
+			date: dateStringToDate(HRworksReceipt.getReceiptById(params.id).date),
 			today: new Date().toJSON().slice(0,10),
 			amount: HRworksReceipt.getReceiptById(params.id).amount,
 			currency: HRworksReceipt.getReceiptById(params.id).currency,
@@ -49,7 +46,7 @@ HRworksReceipt.receipt = function (params) {
 			saveForm: function() {
 			var receipt = [
 						{
-						"date": $("#dateInputDate").dxDateBox('option','value').toString(),
+						"date": dateToString($("#dateInputDate").dxDateBox('option','value')),
 						"text": $("#txtInputText").dxTextBox('option','value'),
 						"amount": $("#numbInputAmount").dxTextBox('option','value'),
 						"currency": $("#selectCurrency").dxSelectBox('option', 'value'),
@@ -69,6 +66,23 @@ HRworksReceipt.receipt = function (params) {
 	}
 	function createGuid() {
 		return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+	}
+	function dateToString(d) {
+		var year, month, day;
+		year = String(d.getFullYear());
+		month = String(d.getMonth() + 1);
+		if (month.length == 1) {
+			month = "0" + month;
+		}
+		day = String(d.getDate());
+		if (day.length == 1) {
+			day = "0" + day;
+		}
+		return year + "" + month + "" + day;
+	}
+	function dateStringToDate(s) {
+		var newDate = new Date(s.substr(0,4),(s.substr(4,2)-1),s.substr(6,2));
+		return newDate;
 	}
 	return viewModel;
 };

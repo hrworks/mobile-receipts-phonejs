@@ -1,11 +1,10 @@
 ﻿<div data-options="dxView : { name: 'home', title: 'Home' } " >
-	<div data-bind="dxCommand: { title: 'Create', id: 'create', icon: 'plus', action: '#receipt'}"></div>
-    <div class="home-view" data-options="dxContent : { targetPlaceholder: 'content' } " >
-		<div class="list" data-bind="dxList: {
-				dataSource: dataSource,
+	<div data-bind="dxCommand: { title: 'Create', id: 'create', icon: 'plus', action: add_receipt}"></div>
+		<div class="home-view" data-options="dxContent : { targetPlaceholder: 'content' } " >	
+			<div class="list" data-bind="dxList: {
+				dataSource: receiptsArray,
 				autoPagingEnabled: true,
 				pullRefreshEnabled: pullRefresh,
-				height: '75%'
 			}">
 			<div class="listItem" data-options="dxTemplate : { name: 'item' }" data-bind=" dxAction: '#receipt/{guid}'">
 				<div class="left">	
@@ -18,5 +17,5 @@
 				</div>	
 			</div>
 		</div>
-    </div>
+	</div>
 </div>

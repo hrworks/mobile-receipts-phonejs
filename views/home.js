@@ -1,25 +1,24 @@
 ﻿HRworksReceipt.home = function (params) {
-    var viewModel = {
-		pullRefresh: ko.observable(true),
-        dataSource: HRworksReceipt.getReceipts(),
-		viewShown: function (e) {
-				console.log(e);
-            if (e.direction == 'backward') {      
-				console.log("1a");
-				viewModel.dataSource([]);
-                viewModel.dataSource(HRworksReceipt.getReceipts());
-            }else{
-				console.log("1b");
-				}
-        },
-		 onloadview: function () {
-            
-				console.log("2");
-				viewModel.dataSource = [];
-                viewModel.dataSource = HRworksReceipt.getReceipts();
-            
-        }
-    };
+
+	var receiptsArray;
+	var RECEIPTS_KEY = "hrworksreceipts-receipts";
+	var pullRefresh = ko.observable(true);
+
+	function add_receipt() {
+		console.log('add_receipt');
+		var receiptItem = HRworksReceipt.createReceiptViewModel();
+		receiptItem.randomData();
+		console.log(receiptItem.toJS());
+		receiptsArray.push(receiptItem.toJS());
+		save_Receipts();
+	}
+	function yyyymmdd_to_date(s) {
+		return new String(s.substr(6,2)+"."+s.substr(4,2)+"."+s.substr(0,4));
+	}
+	function save_Receipts() {
+		console.log(' saving ... : ' + JSON.stringify(receiptsArray()));
+        localStorage.setItem(RECEIPTS_KEY, JSON.stringify(receiptsArray()));
+    }
 	getReceiptKind = function(receiptKindId) {
 		for(var i=0; i < HRworksReceipt.db.receiptKinds.length; i++){
 			if(HRworksReceipt.db.receiptKinds[i].id == receiptKindId) {
@@ -32,8 +31,13 @@
 		var receiptKind = getReceiptKind(receiptKindId);
 		return receiptKind.description;
 	}
-    return viewModel;
+	receiptsArray = ko.observableArray(HRworksReceipt.getReceipts());
+    return {
+		getReceiptKind: getReceiptKind,
+		getReceiptKindDescription: getReceiptKindDescription,
+		add_receipt: add_receipt,
+		pullRefresh: pullRefresh,
+		receiptsArray: receiptsArray,
+		yyyymmdd_to_date: yyyymmdd_to_date
+	};
 };
-function yyyymmdd_to_date(d) {
-		return new String(d.substr(6,2)+"."+d.substr(4,2)+"."+d.substr(0,4));
-}

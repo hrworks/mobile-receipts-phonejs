@@ -8,7 +8,7 @@ HRworksReceipt.createReceiptViewModel = function() {
 		currency = ko.observable(),
 		kindOfPayment = ko.observable(),
 		receiptKind = ko.observable(),
-		timeStamp = ko.observable();
+		timeStamp = ko.observable()
 
     function clear() {
         fromJS({
@@ -22,16 +22,16 @@ HRworksReceipt.createReceiptViewModel = function() {
 			timeStamp: null
         });
     }
-	function randomData() {
+	function initialize() {
         fromJS({
-			date: new Date,
-			text: 'Hans',
-			amount: 111,
-			guid: 'srgthdhtrgdagr', 
-			currency: 'EUR',
-			kindOfPayment: '1',
-			receiptKind: '1',
-			timeStamp: new Date
+			date: '',
+			text: '',
+			amount: 0,
+			guid: '', 
+			currency: '',
+			kindOfPayment: '',
+			receiptKind: '',
+			timeStamp: ''
         });
     }
     function fromJS(receipt) {
@@ -87,7 +87,7 @@ HRworksReceipt.createReceiptViewModel = function() {
 		receiptKind: receiptKind,
 		timeStamp: timeStamp,
 		
-		randomData : randomData,	
+		initialize : initialize,	
         toJS: toJS,
         fromJS: fromJS,
         clear: clear

@@ -1,66 +1,27 @@
 HRworksReceipt.receipt = function (params) {
-	var dateBoxValue = ko.observable(new Date());
-	if (typeof params.id == 'undefined') {
-		var viewModel = {
-			currenciesSource: HRworksReceipt.getCurrencies(),
-			receiptKindsSource: HRworksReceipt.getReceiptKinds(),
-			kindsOfPaymentSource: HRworksReceipt.getKindsOfPayment(),
-			text: '',
-			date: '',
-			today: new Date().toJSON().slice(0,10),
-			amount: '',
-			currency: '',
-			receiptKind: '',
-			kindOfPayment: '',
-			saveForm: function() {
-				var receipt = [
-						{
-						"date": dateToString($("#dateInputDate").dxDateBox('option','value')),
-						"text": $("#txtInputText").dxTextBox('option','value'),
-						"amount": $("#numbInputAmount").dxTextBox('option','value'),
-						"guid": createGuid(),
-						"currency": $("#selectCurrency").dxSelectBox('option', 'value'),
-						"receiptKind": $("#selectReceiptKind").dxSelectBox('option','value'),
-						"kindOfPayment": $("#selectKindOfPayment").dxSelectBox('option','value'),
-						"timeStamp": Date()
-						}
-					];
-					console.log(receipt);
-					HRworksReceipt.insertReceipt(receipt);
-					HRworksReceipt.app.navigate('home', { root: true });
-			}		
-		} 
-	} else {
-		viewModel = {
-			dataSource: HRworksReceipt.getReceiptById(params.id),
-			currenciesSource: HRworksReceipt.getCurrencies(),
-			receiptKindsSource: HRworksReceipt.getReceiptKinds(),
-			kindsOfPaymentSource: HRworksReceipt.getKindsOfPayment(),
-			text: HRworksReceipt.getReceiptById(params.id).text,
-			date: dateStringToDate(HRworksReceipt.getReceiptById(params.id).date),
-			today: new Date().toJSON().slice(0,10),
-			amount: HRworksReceipt.getReceiptById(params.id).amount,
-			currency: HRworksReceipt.getReceiptById(params.id).currency,
-			receiptKind: HRworksReceipt.getReceiptById(params.id).receiptKind,
-			kindOfPayment: HRworksReceipt.getReceiptById(params.id).kindOfPayment,
-			saveForm: function() {
-			var receipt = [
-						{
-						"date": dateToString($("#dateInputDate").dxDateBox('option','value')),
-						"text": $("#txtInputText").dxTextBox('option','value'),
-						"amount": $("#numbInputAmount").dxTextBox('option','value'),
-						"currency": $("#selectCurrency").dxSelectBox('option', 'value'),
-						"receiptKind": $("#selectReceiptKind").dxSelectBox('option','value'),
-						"kindOfPayment": $("#selectKindOfPayment").dxSelectBox('option','value'),
-						"timeStamp": Date(),
-						"guid": params.id
-						}
-					];
-					HRworksReceipt.updateReceipt(params.id,receipt);
-					HRworksReceipt.app.navigate('', { direction: 'backward', root: true });
-				}
-		}
+	var dateBoxValue = ko.observable(new Date()),
+		currenciesSource = ko.observableArray(HRworksReceipt.getCurrencies()),
+		receiptKindsSource = ko.observableArray(HRworksReceipt.getReceiptKinds()),
+		kindsOfPaymentSource = ko.observableArray(HRworksReceipt.getKindsOfPayment()),
+		RECEIPTS_KEY = "hrworksreceipts-receipts",
+		receiptsArray,
+		today = new Date().toJSON().slice(0,10);
+		
+	var receiptItem = HRworksReceipt.createReceiptViewModel();
+	receiptItem.initialize();
+	var receipt = receiptItem.toJS();
+	function ViewModel() {
+		this.text = ko.observable(receipt.text);
+		this.amount = ko.observable(receipt.amount);
+		this.date = ko.observable(receipt.date);
+		this.currency = ko.observable(receipt.currency);
+		this.receiptKind = ko.observable(receipt.receiptKind);
+		this.kindOfPayment = ko.observable(receipt.kindOfPayment);
+		this.currenciesSource = currenciesSource;
+		this.receiptKindsSource = receiptKindsSource;
+		this.kindsOfPaymentSource = kindsOfPaymentSource;
 	}
+	
 	function S4() {
 		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
 	}
@@ -84,5 +45,31 @@ HRworksReceipt.receipt = function (params) {
 		var newDate = new Date(s.substr(0,4),(s.substr(4,2)-1),s.substr(6,2));
 		return newDate;
 	}
-	return viewModel;
+	function add_receipt() {
+		var newReceiptItem = HRworksReceipt.createReceiptViewModel();
+		var newReceipt = [ {
+			"date": dateToString($("#dateInputDate").dxDateBox('option','value')),
+			"text": $("#txtInputText").dxTextBox('option','value'),
+			"amount": $("#numbInputAmount").dxTextBox('option','value'),
+			"currency": $("#selectCurrency").dxSelectBox('option', 'value'),
+			"receiptKind": $("#selectReceiptKind").dxSelectBox('option','value'),
+			"kindOfPayment": $("#selectKindOfPayment").dxSelectBox('option','value'),
+			"timeStamp": Date(),
+			"guid": createGuid()
+		} ];
+		newReceiptItem.fromJS(newReceipt[0]);
+		console.log(newReceiptItem.toJS());
+		HRworksReceipt.insertReceipt(newReceiptItem.toJS());
+		HRworksReceipt.app.navigate('home', { direction: 'backward', root: true });
+	}
+	receiptsArray = ko.observableArray(HRworksReceipt.getReceipts());
+	var vm = new ViewModel();
+	return {
+		vm: vm,
+		add_receipt: add_receipt,
+		dataStringToDate: dateStringToDate,
+		dateToString: dateToString,
+		createGuid: createGuid,
+		S4: S4,
+	}
 };

@@ -24,7 +24,7 @@
               }
             ]
         });
-        HRworksReceipt.initUserData();
+        HRworksReceipt.initData();
         HRworksReceipt.app.router.register(":view/:id", { view: "home", id: undefined });
         HRworksReceipt.app.navigate();
     });

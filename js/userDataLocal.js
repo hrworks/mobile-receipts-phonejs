@@ -11,30 +11,32 @@
 		RECEIPTS_KEY = "hrworksreceipts-receipts",
 		receiptsArray;
 
-    function insertReceipt(receipts) {
-		receiptsArray.push(receipt[0]);
+    function insertReceipt(receipt) {
+		receiptsArray = getReceipts();
+		console.log(receiptsArray);
+		receiptsArray.push(receipt);
         saveReceipts();
     }
 
-    function updateReceipt(guid, receipt) {
-        var localReceiptArray = getReceipts();
-        for (var index = 0; index < localReceiptArray.length; index++) {
+	function updateReceipt(guid, receipt) {
+		var localReceiptArray = getReceipts();
+		for (var index = 0; index < localReceiptArray.length; index++) {
             if (localReceiptArray[index].guid == guid)
                 break;
         }
         localReceiptArray.splice(index, 1, receipt[0]);
         saveReceipts(localReceiptArray);
-    }
+    } 
 
     function deleteReceipt(id) {
         receiptsArray.remove(function(item) {
             return item.id === id;
         });
         saveReceipts();
-    }
+    } 
 
-    function saveReceipts(localReceiptArray) {
-        localStorage.setItem(RECEIPTS_KEY, JSON.stringify(localReceiptArray));
+    function saveReceipts() {
+        localStorage.setItem(RECEIPTS_KEY, JSON.stringify(receiptsArray));
     }
 
 	function getReceipts() {
@@ -45,7 +47,7 @@
         var receipts = JSON.parse(localStorage.getItem(RECEIPTS_KEY));
 		for(var i = 0; i < receipts.length; i++) {
 			if(receipts[i].guid == id) {
-				var receipt = receipts[i];;
+				var receipt = receipts[i];
 				return receipt;
 			}
 		}
@@ -59,9 +61,9 @@
 	function getKindsOfPayment() {
 		return JSON.parse(localStorage.getItem(KINDSOFPAYMENT_KEY));
 	}
-    function initUserData() {
+    function initData() {
         if(localStorage.getItem(DATA_VERSION_KEY) !== DATA_VERSION) {
-            clearUserData();
+            clearData();
             localStorage.setItem(DATA_VERSION_KEY, DATA_VERSION);
 			localStorage.setItem(KINDSOFPAYMENT_KEY, JSON.stringify(HRworksReceipt.db.kindsOfPayment));
 			localStorage.setItem(RECEIPTKINDS_KEY, JSON.stringify(HRworksReceipt.db.receiptKinds));
@@ -70,7 +72,7 @@
 			localStorage.setItem(RECEIPTS_KEY, JSON.stringify(receiptsArray));
 		}
     }
-    function clearUserData() {
+    function clearData() {
         var localStorageKeys = [
             DATA_VERSION,
 			KINDSOFPAYMENT_KEY,
@@ -96,8 +98,8 @@
 		getReceiptKinds: getReceiptKinds,
 		getKindsOfPayment: getKindsOfPayment,
 
-        initUserData: initUserData,
-        clearUserData: clearUserData
+        initData: initData,
+        clearData: clearData
         
     });  
 }(jQuery, DevExpress, HRworksReceipt);

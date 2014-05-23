@@ -1,31 +1,39 @@
-﻿(function() {
-    "use strict";
+﻿window.HRworksReceipt = window.HRworksReceipt || {};
 
-    var HRworksReceipt = window.HRworksReceipt = { };
-    
-    // Uncomment the line below to disable platform-specific look and feel and to use the Generic theme for all devices
-    // DevExpress.devices.current({ platform: "generic" });
+$(function () {
+	// Uncomment the line below to disable platform-specific look and feel and to use the Generic theme for all devices
+	// DevExpress.devices.current({ platform: "generic" });
 
-    $(function() {
-        HRworksReceipt.app = new DevExpress.framework.html.HtmlApplication({
-            namespace: HRworksReceipt,
-            
-            navigationType: "navbar",
-            navigation: [
-              {
-                title: "Belege",
-                action: "#home",
-                icon: "home"
-              },
-              {
-                title: "Infos",
-                action: "#about",
-                icon: "info"
-              }
-            ]
-        });
-        HRworksReceipt.initData();
-        HRworksReceipt.app.router.register(":view/:id", { view: "home", id: undefined });
-        HRworksReceipt.app.navigate();
-    });
-})();
+	HRworksReceipt.localStoreReceipts = new DevExpress.data.LocalStore({
+			name : "receipts",
+			key : "guid",
+			immediate : true
+		});
+	HRworksReceipt.localStoreCurrencies = new DevExpress.data.LocalStore({
+			name : "currencies",
+			key : "symbol",
+			immediate : true
+		});
+	HRworksReceipt.localStoreReceiptKinds = new DevExpress.data.LocalStore({
+			name : "receiptKinds",
+			key : "id",
+			immediate : true
+		});
+	HRworksReceipt.localStoreKindsOfPayment = new DevExpress.data.LocalStore({
+			name : "kindsOfPayment",
+			key : "id",
+			immediate : true
+		});
+	HRworksReceipt.app = new DevExpress.framework.html.HtmlApplication({
+			namespace : HRworksReceipt,
+			navigationType : HRworksReceipt.config.navigationType,
+			navigation : HRworksReceipt.config.navigation
+		});
+
+	HRworksReceipt.app.router.register(":view/:id", {
+		view : "index",
+		id : undefined
+	});
+	HRworksReceipt.initData();
+	HRworksReceipt.app.navigate();
+});

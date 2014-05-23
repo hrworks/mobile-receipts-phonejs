@@ -34,6 +34,11 @@ $(function () {
 		view : "index",
 		id : undefined
 	});
+
+	HRworksReceipt.currenciesSource = new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreCurrencies });
+	HRworksReceipt.receiptKindsSource = new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreReceiptKinds });
+	HRworksReceipt.kindsOfPaymentSource = new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreKindsOfPayment });
+	HRworksReceipt.ds = new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreReceipts });
 	HRworksReceipt.initData();
 	HRworksReceipt.app.navigate();
 	

@@ -10,8 +10,13 @@ Globalize.addCultureInfo("de", {messages: {
 		"receiptKind": "Belegart",
 		"kindOfPayment": "Zahlungsart",
 		"delete": "Löschen",
-		"DeleteThisReceipt" : "Diesen Beleg löschen",
+		"deleteThisReceipt" : "Diesen Beleg löschen?",
+		"nameIsRequired": "Bezeichung nicht angegeben",
+		"amountIsRequired": "Betrag nicht angegeben",
+		"dateIsRequired": "Datum nicht angegeben",
+		"receiptKindIsRequired": "Belegart nicht angegeben",
+		"kindOfPaymentIsRequired": "Zahlungsart nicht angegeben",
+		"currencyIsRequired": "Währung nicht angegeben",
 		"Key_AppTitle": "HRworks - Belege"
-
 	}
 });

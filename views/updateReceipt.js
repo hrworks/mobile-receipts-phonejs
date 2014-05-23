@@ -16,13 +16,8 @@
 	var viewModel = {
 		actionSheetVisible: ko.observable(false),
 		actionSheetData: [
-			{text:Globalize.localize("delete"), clickAction: removeReceipt, type: "danger"}
+			{text: Globalize.localize("delete"), clickAction: removeReceipt, type: "danger"}
 		],
-		// create DataSources
-		ds: new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreReceipts }),
-		currenciesSource: new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreCurrencies }),
-		receiptKindsSource: new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreReceiptKinds }),
-		kindsOfPaymentSource: new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreKindsOfPayment }),
 		
 		// create value variables
 		inputText: ko.observable(getReceiptById(params.id).text),
@@ -36,15 +31,27 @@
 		updateReceipt: function () {
 			var error = 0;
 			if (!viewModel.inputText()) {
-				DevExpress.ui.notify("Text is empty", 'error', 3000);
+				DevExpress.ui.notify(Globalize.localize("nameIsRequired"), 'error', 3000);
 				error = 1;
 			}
 			if (!viewModel.inputAmount()) {
-				DevExpress.ui.notify("Amount is empty ", 'error', 3000);
+				DevExpress.ui.notify(Globalize.localize("amountIsRequired"), 'error', 3000);
 				error = 1;
 			}
 			if (!viewModel.inputDate()) {
-				DevExpress.ui.notify("Date is empty ", 'error', 3000);
+				DevExpress.ui.notify(Globalize.localize("dateIsRequired"), 'error', 3000);
+				error = 1;
+			}
+			if (viewModel.currency() == "") {
+				DevExpress.ui.notify(Globalize.localize("currencyIsRequired"), 'error', 3000);
+				error = 1;
+			}
+			if (viewModel.receiptKind() == "") {
+				DevExpress.ui.notify(Globalize.localize("receiptKindIsRequired"), 'error', 3000);
+				error = 1;
+			}
+			if (viewModel.kindOfPayment() == "") {
+				DevExpress.ui.notify(Globalize.localize("kindOfPaymentIsRequired"), 'error', 3000);
 				error = 1;
 			}
 			if (error == 0) {

@@ -19,7 +19,7 @@
 					<div class="dx-field-label">@currency</div>
 					<div class="dx-field-value">
 						<div id="selectCurrency" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: currenciesSource,
+							dataSource: HRworksReceipt.currenciesSource,
 							displayExpr: 'symbol',
 							valueExpr: 'symbol',
 							value: currency
@@ -37,7 +37,7 @@
 					<div class="dx-field-label">@receiptKind</div>
 					<div class="dx-field-value">
 						<div id="selectReceiptKind" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: receiptKindsSource,
+							dataSource: HRworksReceipt.receiptKindsSource,
 							displayExpr: 'description',
 							valueExpr: 'id',
 							value: receiptKind
@@ -49,7 +49,7 @@
 					<div class="dx-field-label">@kindOfPayment</div>
 					<div class="dx-field-value">
 						<div id="selectKindOfPayment" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: kindsOfPaymentSource,
+							dataSource: HRworksReceipt.kindsOfPaymentSource,
 							displayExpr: 'description',
 							valueExpr: 'id',
 							value: kindOfPayment
@@ -61,7 +61,7 @@
 			<div class="deleteButton">
 				 <div data-bind="dxButton: { text: '@delete', type: 'danger', clickAction: clickRemoveReceipt }"></div>
 			</div>
-			<div data-bind="dxActionSheet: { title: '@DeleteThisReceipt?', dataSource: actionSheetData, visible: actionSheetVisible }"></div>
+			<div data-bind="dxActionSheet: { title: '@deleteThisReceipt?', dataSource: actionSheetData, visible: actionSheetVisible }"></div>
 		</div>
 	</div>
 </div>

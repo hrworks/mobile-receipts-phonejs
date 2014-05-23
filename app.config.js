@@ -3,12 +3,12 @@ window.HRworksReceipt = $.extend(true, window.HRworksReceipt, {
         "navigationType": "navbar",
         "navigation": [
             {
-                title: "Receipts",
+                title: Globalize.localize("receipts"),
                 action: "#index",
                 icon: "home"
             },
             {
-                title: "About",
+                title: Globalize.localize("about"),
                 action: "#about",
                 icon: "info"
             }

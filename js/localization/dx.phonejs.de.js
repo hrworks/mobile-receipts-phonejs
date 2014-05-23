@@ -17,6 +17,7 @@ Globalize.addCultureInfo("de", {messages: {
         Select: "Auswählen...",
         Search: "Suchen",
         Back: "Zurück",
+		Delete: "Löschen",
         "dxLookup-searchPlaceholder": "Minimale Anzahl Zeichen: {0}",
         "dxCollectionContainerWidget-noDataText": "Keine Daten verfügbar",
         "dxList-pullingDownText": "Zum Aktualisieren nach unten ziehen",

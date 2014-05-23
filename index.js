@@ -36,4 +36,7 @@ $(function () {
 	});
 	HRworksReceipt.initData();
 	HRworksReceipt.app.navigate();
+	
 });
+Globalize.culture(navigator.language || navigator.browserLanguage);
+document.title = Globalize.localize("Key_AppTitle");

@@ -16,7 +16,7 @@
 	var viewModel = {
 		actionSheetVisible: ko.observable(false),
 		actionSheetData: [
-			{text:"Delete", clickAction: removeReceipt, type: "danger"}
+			{text:Globalize.localize("delete"), clickAction: removeReceipt, type: "danger"}
 		],
 		// create DataSources
 		ds: new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreReceipts }),

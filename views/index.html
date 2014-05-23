@@ -1,8 +1,8 @@
-﻿<div data-options="dxView : { name: 'index', title: 'HRworks - Receipts' } " >
+﻿<div data-options="dxView : { name: 'index', title: '@receipts' } " >
 	<div data-bind="dxCommand: { title: 'Create', id: 'create', icon: 'plus', action: '#addReceipt'}"></div>
 	<!-- <div data-bind="dxCommand: { location:'left', title: 'Refresh', id: 'refresh', icon: 'refresh'}"></div> -->
     <div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >
-		<div data-bind="dxTextBox: {placeholder: 'Search...', mode: 'search', value: searchQuery, valueUpdateEvent: 'keyup'}"></div>
+		<div data-bind="dxTextBox: {placeholder: '@Search...', mode: 'search', value: searchQuery, valueUpdateEvent: 'keyup'}"></div>
 		<div data-bind="dxList: { dataSource: ds, pullRefreshEnabled: true, searchQuery: searchQuery} ">
             <div data-options="dxTemplate : { name: 'item' }" data-bind="dxAction: '#updateReceipt/{guid}'" class="list-item">
                <div class="left">	

@@ -19,7 +19,7 @@
 					<div class="dx-field-label">@currency</div>
 					<div class="dx-field-value">
 						<div id="selectCurrency" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: HRworksReceipt.currenciesSource,
+							dataSource: currenciesSource,
 							displayExpr: 'symbol',
 							valueExpr: 'symbol',
 							value: currency
@@ -37,7 +37,7 @@
 					<div class="dx-field-label">@receiptKind</div>
 					<div class="dx-field-value">
 						<div id="selectReceiptKind" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: HRworksReceipt.receiptKindsSource,
+							dataSource: receiptKindsSource,
 							displayExpr: 'description',
 							valueExpr: 'id',
 							value: receiptKind
@@ -49,7 +49,7 @@
 					<div class="dx-field-label">@kindOfPayment</div>
 					<div class="dx-field-value">
 						<div id="selectKindOfPayment" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: HRworksReceipt.kindsOfPaymentSource,
+							dataSource: kindsOfPaymentSource,
 							displayExpr: 'description',
 							valueExpr: 'id',
 							value: kindOfPayment

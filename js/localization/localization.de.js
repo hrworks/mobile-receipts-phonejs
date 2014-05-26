@@ -10,7 +10,7 @@ Globalize.addCultureInfo("de", {messages: {
 		"receiptKind": "Belegart",
 		"kindOfPayment": "Zahlungsart",
 		"delete": "Löschen",
-		"deleteThisReceipt" : "Diesen Beleg löschen?",
+		"deleteThisReceipt" : "Diesen Beleg löschen",
 		"nameIsRequired": "Bezeichung nicht angegeben",
 		"amountIsRequired": "Betrag nicht angegeben",
 		"dateIsRequired": "Datum nicht angegeben",

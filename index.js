@@ -1,6 +1,7 @@
 ﻿window.HRworksReceipt = window.HRworksReceipt || {};
 
 $(function () {
+	HRworksReceipt.initData();
 	// Uncomment the line below to disable platform-specific look and feel and to use the Generic theme for all devices
 	// DevExpress.devices.current({ platform: "generic" });
 
@@ -35,13 +36,21 @@ $(function () {
 		id : undefined
 	});
 
-	HRworksReceipt.currenciesSource = new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreCurrencies });
-	HRworksReceipt.receiptKindsSource = new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreReceiptKinds });
-	HRworksReceipt.kindsOfPaymentSource = new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreKindsOfPayment });
-	HRworksReceipt.ds = new DevExpress.data.DataSource({ store: HRworksReceipt.localStoreReceipts });
-	HRworksReceipt.initData();
+	HRworksReceipt.currenciesSource = new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreCurrencies
+		});
+	HRworksReceipt.receiptKindsSource = new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreReceiptKinds
+		});
+	HRworksReceipt.kindsOfPaymentSource = new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreKindsOfPayment
+		});
+	HRworksReceipt.ds = new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreReceipts
+		});
+
 	HRworksReceipt.app.navigate();
-	
+
 });
 Globalize.culture(navigator.language || navigator.browserLanguage);
 document.title = Globalize.localize("Key_AppTitle");

@@ -4,6 +4,7 @@
 		HRworksReceipt.localStoreReceipts.remove(params.id);
 		HRworksReceipt.app.navigate('index', { direction: 'backward', root: true });
 	}
+	
 	function getReceiptById(id) {
         var receipts = JSON.parse(localStorage.getItem("dx-data-localStore-receipts"));
 		for(var i = 0; i < receipts.length; i++) {
@@ -19,12 +20,23 @@
 			{text: Globalize.localize("delete"), clickAction: removeReceipt, type: "danger"}
 		],
 		
+		// create DataSource
+		currenciesSource : new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreCurrencies
+		}),
+		receiptKindsSource : new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreReceiptKinds
+		}),
+		kindsOfPaymentSource : new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreKindsOfPayment
+		}),
+
 		// create value variables
 		inputText: ko.observable(getReceiptById(params.id).text),
 		inputAmount: ko.observable(getReceiptById(params.id).amount),
 		currency: ko.observable(getReceiptById(params.id).currency),
-		inputDate: ko.observable(getReceiptById(params.id).date.slice(0,10)),
-		date_placeholder: ko.observable(new Date().toJSON().slice(0,10)),
+		inputDate: ko.observable(Globalize.format(new Date(getReceiptById(params.id).date), 'yyyy-MM-dd')),
+		date_placeholder: ko.observable(Globalize.format(new Date(), 'yyyy-MM-dd' )),
 		receiptKind: ko.observable(getReceiptById(params.id).receiptKind),
 		kindOfPayment: ko.observable(getReceiptById(params.id).kindOfPayment),
 		

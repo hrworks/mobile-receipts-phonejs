@@ -13,6 +13,25 @@
 		gender : ko.observable(""),
 		birthday : ko.observable(),
 		date_placeholder : ko.observable(Globalize.format(new Date(), 'yyyy-MM-dd')),
+		currenciesSource : new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreCurrencies
+		}),
+		receiptKindsSource : new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreReceiptKinds
+		}),
+		kindsOfPaymentSource : new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreKindsOfPayment
+		}),
+
+		// create value variables
+		inputText : ko.observable(),
+		inputAmount : ko.observable(),
+		currency : ko.observable(""),
+		inputDate : ko.observable(),
+		date_placeholder : ko.observable(Globalize.format(new Date(), 'yyyy-MM-dd')),
+		receiptKind : ko.observable(""),
+		kindOfPayment : ko.observable(""),
+
 
 		addReceipt : function () {
 			var error = 0;
@@ -57,6 +76,7 @@
 				viewModel.inputText("");
 				viewModel.inputAmount("");
 				viewModel.currency("EUR");
+				viewModel.currency("");
 				viewModel.inputDate("");
 				viewModel.receiptKind("");
 				viewModel.kindOfPayment("");

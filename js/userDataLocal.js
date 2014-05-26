@@ -8,6 +8,15 @@
 		RECEIPTKINDS_KEY = "dx-data-localStore-receiptKinds",
 		CURRENCIES_KEY = "dx-data-localStore-currencies";
 
+	function getReceiptById(id) {
+        var receipts = JSON.parse(localStorage.getItem("dx-data-localStore-receipts"));
+		for(var i = 0; i < receipts.length; i++) {
+			if(receipts[i].guid == id) {
+				var receipt = receipts[i];
+				return receipt;
+			}
+		}
+    }
 	function initData() {
 		if(localStorage.getItem(DATA_VERSION_KEY) !== DATA_VERSION) {
 			clearData();

@@ -6,55 +6,31 @@
 				<div class="dx-field">
 					<div class="dx-field-label">@name</div>
 					<div class="dx-field-value">
-						<div id="txtInputText" data-bind="dxTextBox: { value: inputText, placeholder: '@name' }"></div>
+						<div data-bind="dxTextBox: { value: inputText, placeholder: '@name' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@amount</div>
+					<div class="dx-field-label">@number</div>
 					<div class="dx-field-value">
-						<div id="numbInputAmount" data-bind="dxTextBox: { value: inputAmount, mode: 'number', placeholder: '@amount' }"></div>
+						<div data-bind="dxTextBox: { value: inputAmount, mode: 'number', placeholder: '@number' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@currency</div>
+					<div class="dx-field-label">@gender</div>
 					<div class="dx-field-value">
-						<div id="selectCurrency" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: HRworksReceipt.currenciesSource,
+						<div class="dx-field-value" data-bind="dxSelectBox: {
+							dataSource: genderSource,
 							displayExpr: 'symbol',
 							valueExpr: 'symbol',
-							value: currency
+							value: gender
 							}">
 						</div>
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@date</div>
+					<div class="dx-field-label">@birthday</div>
 					<div class="dx-field-value">
-						<div id="dateInputDate" data-bind="dxDateBox: { value: inputDate, format: 'date', placeholder: date_placeholder }"></div>
-					</div>
-				</div>
-				<div class="dx-field">
-					<div class="dx-field-label">@receiptKind</div>
-					<div class="dx-field-value">
-						<div id="selectReceiptKind" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: HRworksReceipt.receiptKindsSource,
-							displayExpr: 'description',
-							valueExpr: 'id',
-							value: receiptKind
-							}">
-						</div>
-					</div>
-				</div>
-				<div class="dx-field">
-					<div class="dx-field-label">@kindOfPayment</div>
-					<div class="dx-field-value">
-						<div id="selectKindOfPayment" class="dx-field-value" data-bind="dxSelectBox: {
-							dataSource: HRworksReceipt.kindsOfPaymentSource,
-							displayExpr: 'description',
-							valueExpr: 'id',
-							value: kindOfPayment
-							}">
-						</div>
+						<div data-bind="dxDateBox: { value: inputDate, format: 'date', placeholder: date_placeholder }"></div>
 					</div>
 				</div>
 			</div>

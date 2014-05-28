@@ -1,18 +1,8 @@
-﻿HRworksReceipt.addReceipt = function (params) {
+HRworksReceipt.addReceipt = function (params) {
 
 	var viewModel = {
 
 		// create DataSource
-		genderSource : new DevExpress.data.DataSource({
-				store : HRworksReceipt.localStoreCurrencies
-			}),
-
-		// create value variables
-		inputText : ko.observable(),
-		inputNumber : ko.observable(),
-		gender : ko.observable(""),
-		birthday : ko.observable(),
-		date_placeholder : ko.observable(Globalize.format(new Date(), 'yyyy-MM-dd')),
 		currenciesSource : new DevExpress.data.DataSource({
 			store : HRworksReceipt.localStoreCurrencies
 		}),
@@ -32,23 +22,30 @@
 		receiptKind : ko.observable(""),
 		kindOfPayment : ko.observable(""),
 
-
 		addReceipt : function () {
 			var error = 0;
 			if (!viewModel.inputText()) {
 				DevExpress.ui.notify(Globalize.localize("nameIsRequired"), 'error', 3000);
 				error = 1;
 			}
-			if (!viewModel.inputNumber()) {
-				DevExpress.ui.notify(Globalize.localize("numberIsRequired"), 'error', 3000);
+			if (!viewModel.inputAmount()) {
+				DevExpress.ui.notify(Globalize.localize("amountIsRequired"), 'error', 3000);
 				error = 1;
 			}
-			if (!viewModel.Birthdate()) {
-				DevExpress.ui.notify(Globalize.localize("birthdateIsRequired"), 'error', 3000);
+			if (!viewModel.inputDate()) {
+				DevExpress.ui.notify(Globalize.localize("dateIsRequired"), 'error', 3000);
 				error = 1;
 			}
-			if (viewModel.gender() == "") {
-				DevExpress.ui.notify(Globalize.localize("genderIsRequired"), 'error', 3000);
+			if (viewModel.currency() == "") {
+				DevExpress.ui.notify(Globalize.localize("currencyIsRequired"), 'error', 3000);
+				error = 1;
+			}
+			if (viewModel.receiptKind() == "") {
+				DevExpress.ui.notify(Globalize.localize("receiptKindIsRequired"), 'error', 3000);
+				error = 1;
+			}
+			if (viewModel.kindOfPayment() == "") {
+				DevExpress.ui.notify(Globalize.localize("kindOfPaymentIsRequired"), 'error', 3000);
 				error = 1;
 			}
 			if (error == 0) {
@@ -75,7 +72,6 @@
 				//dump the values of the form items if the view is loaded from the cache
 				viewModel.inputText("");
 				viewModel.inputAmount("");
-				viewModel.currency("EUR");
 				viewModel.currency("");
 				viewModel.inputDate("");
 				viewModel.receiptKind("");

@@ -20,7 +20,6 @@
 			}
 		},
 	};
-
 	viewModel.searchQuery.subscribe(function (value) {
 		viewModel.ds.filter("text", "contains", value);
 		viewModel.ds.load();
@@ -36,6 +35,9 @@
 	getReceiptKindDescription = function (receiptKindId) {
 		var receiptKind = getReceiptKind(receiptKindId);
 		return receiptKind.description;
+	}
+	YYYYMMDDToDDMMYYYY = function (YYYYMMDD) {
+		return YYYYMMDD.slice(6, 8) + '.' + YYYYMMDD.slice(4, 6) + '.' + YYYYMMDD.slice(0, 4);
 	}
 	return viewModel;
 };

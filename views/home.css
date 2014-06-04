@@ -15,10 +15,10 @@
 	position: relative;
 	float: right;
 }
-.deleteButton  {
+.largeButton  {
     margin: 10px;
 }
-.deleteButton .dx-button {
+.largeButton .dx-button {
     margin: 10px 0;
     padding: 0;
     width: 100%;

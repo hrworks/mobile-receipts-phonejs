@@ -1,6 +1,6 @@
 ﻿<div data-options="dxView : { name: 'updateReceipt', title: '@receipt' } " >
-	<div data-bind="dxCommand: { title: 'Create', id: 'create', icon: 'save', action: updateReceipt}"></div>
-	<div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >
+	<div data-bind="dxCommand: { title: '@saveButton', id: 'create', action: updateReceipt}"></div>
+	<div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } ">
 		<div class="content" data-bind="dxScrollView: { }">
 			<div class="dx-fieldset">
 				<div class="dx-field">
@@ -30,7 +30,7 @@
 				<div class="dx-field">
 					<div class="dx-field-label">@date</div>
 					<div class="dx-field-value">
-						<div id="dateInputDate" data-bind="dxDateBox: { value: inputDate, format: 'date', placeholder: date_placeholder }"></div>
+						<div id="dateInputDate" data-bind="dxDateBox: { value: inputDate, format: 'date' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
@@ -58,8 +58,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="deleteButton">
+			<div class="largeButton">
 				 <div data-bind="dxButton: { text: '@delete', type: 'danger', clickAction: clickRemoveReceipt }"></div>
+			</div>
+						<div class="largeButton">
+				 <div data-bind="dxButton: { text: 'Beleg duplizieren', clickAction: clickDoubleReceipt }"></div>
 			</div>
 			<div data-bind="dxActionSheet: { title: '@deleteThisReceipt?', dataSource: actionSheetData, visible: actionSheetVisible }"></div>
 		</div>

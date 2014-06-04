@@ -1,5 +1,13 @@
 HRworksReceipt.addReceipt = function (params) {
 
+	function dateToYYYYMMDD(date) {
+		function pad(num) {
+			num = num + '';
+			return num.length < 2 ? '0' + num : num;
+		}
+		return date.getFullYear() + '' + pad(date.getMonth() + 1) + '' + pad(date.getDate());
+	}
+
 	var viewModel = {
 
 		// create DataSource
@@ -7,15 +15,15 @@ HRworksReceipt.addReceipt = function (params) {
 		receiptKindsDataSource : HRworksReceipt.receiptKindsSource,
 		kindsOfPaymentsDataSource : HRworksReceipt.kindsOfPaymentSource,
 		// create value variables
-		inputText : ko.observable().extend({ minLength: 3, required: true }),
-		inputAmount : ko.observable().extend({ required: true }),
-		currency : ko.observable("").extend({ required: true }),
-		inputDate : ko.observable().extend({ required: true }),
-		date_placeholder : ko.observable(Globalize.format(new Date(), 'yyyy-MM-dd')),
-		receiptKind : ko.observable("").extend({ required: true }),
-		kindOfPayment : ko.observable("").extend({ required: true }),
+		inputText : ko.observable(),
+		inputAmount : ko.observable(),
+		currency : ko.observable("EUR"),
+		inputDate : ko.observable(),
+		receiptKind : ko.observable(""),
+		kindOfPayment : ko.observable(""),
 
 		addReceipt : function () {
+			var formatedDate = dateToYYYYMMDD(viewModel.inputDate());
 			var error = 0;
 			var errorMessage ="";
 			if (!viewModel.inputText()) {
@@ -49,7 +57,7 @@ HRworksReceipt.addReceipt = function (params) {
 				HRworksReceipt.localStoreReceipts.insert({
 					text : viewModel.inputText(),
 					amount : viewModel.inputAmount(),
-					date : viewModel.inputDate(),
+					date : formatedDate,
 					receiptKind : viewModel.receiptKind(),
 					kindOfPayment : viewModel.kindOfPayment(),
 					currency : viewModel.currency(),

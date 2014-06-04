@@ -18,6 +18,7 @@ Globalize.addCultureInfo("default", {
 		"receiptKindIsRequired": "Receipt Kind is required",
 		"kindOfPaymentIsRequired": "Kind of Payment is required",
 		"currencyIsRequired": "Currency is required",
+		"errorMessage": "The following entries are missing or incorrect:",
 		"Key_AppTitle": "HRworks Receipts"
 	}
 });

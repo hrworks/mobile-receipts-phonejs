@@ -1,10 +1,10 @@
 window.HRworksReceipt = $.extend(true, window.HRworksReceipt, {
     "config": {
-        "navigationType": "navbar",
+        "layoutSet": "navbar",
         "navigation": [
             {
                 title: Globalize.localize("receipts"),
-                action: "#index",
+                action: "#home",
                 icon: "home"
             },
             {

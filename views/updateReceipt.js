@@ -2,7 +2,7 @@
 
 	function removeReceipt() {
 		HRworksReceipt.localStoreReceipts.remove(params.id);
-		HRworksReceipt.app.navigate('index', { direction: 'backward', root: true });
+		HRworksReceipt.app.navigate('home', { direction: 'backward', root: true });
 	}
 	
 	function getReceiptById(id) {
@@ -42,29 +42,33 @@
 		
 		updateReceipt: function () {
 			var error = 0;
+			var errorMessage ="";
 			if (!viewModel.inputText()) {
-				DevExpress.ui.notify(Globalize.localize("nameIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("name") + "<br>";
 				error = 1;
 			}
 			if (!viewModel.inputAmount()) {
-				DevExpress.ui.notify(Globalize.localize("amountIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("amount") + "<br>";
 				error = 1;
 			}
 			if (!viewModel.inputDate()) {
-				DevExpress.ui.notify(Globalize.localize("dateIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("date") + "<br>";
 				error = 1;
 			}
 			if (viewModel.currency() == "") {
-				DevExpress.ui.notify(Globalize.localize("currencyIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("currency") + "<br>";
 				error = 1;
 			}
 			if (viewModel.receiptKind() == "") {
-				DevExpress.ui.notify(Globalize.localize("receiptKindIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("receiptKind") + "<br>";
 				error = 1;
 			}
 			if (viewModel.kindOfPayment() == "") {
-				DevExpress.ui.notify(Globalize.localize("kindOfPaymentIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("kindOfPayment") + "<br>";
 				error = 1;
+			}
+			if(error == 1) {
+			DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("errorMessage"));
 			}
 			if (error == 0) {
 				HRworksReceipt.localStoreReceipts.update( params.id, {
@@ -76,7 +80,7 @@
 				currency :viewModel.currency(),
 				timestamp: Date()
 				}).done(function () {					
-					HRworksReceipt.app.navigate('index', { direction: 'backward', root: true });
+					HRworksReceipt.app.navigate('home', { direction: 'backward', root: true });
 				}).fail(function () {
 					console.log("fail");
 				});
@@ -84,10 +88,6 @@
 		},
 		clickRemoveReceipt: function () {
 			viewModel.actionSheetVisible(true);
-		},
-		//Reload the dataSource
-		viewShown: function (e) {
-			//Reset the value of the input filds
 		},
 	};
 	return viewModel;

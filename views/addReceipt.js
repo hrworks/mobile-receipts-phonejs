@@ -3,50 +3,47 @@ HRworksReceipt.addReceipt = function (params) {
 	var viewModel = {
 
 		// create DataSource
-		currenciesSource : new DevExpress.data.DataSource({
-			store : HRworksReceipt.localStoreCurrencies
-		}),
-		receiptKindsSource : new DevExpress.data.DataSource({
-			store : HRworksReceipt.localStoreReceiptKinds
-		}),
-		kindsOfPaymentSource : new DevExpress.data.DataSource({
-			store : HRworksReceipt.localStoreKindsOfPayment
-		}),
-
+		currenciesDataSource : HRworksReceipt.currenciesSource,
+		receiptKindsDataSource : HRworksReceipt.receiptKindsSource,
+		kindsOfPaymentsDataSource : HRworksReceipt.kindsOfPaymentSource,
 		// create value variables
-		inputText : ko.observable(),
-		inputAmount : ko.observable(),
-		currency : ko.observable(""),
-		inputDate : ko.observable(),
+		inputText : ko.observable().extend({ minLength: 3, required: true }),
+		inputAmount : ko.observable().extend({ required: true }),
+		currency : ko.observable("").extend({ required: true }),
+		inputDate : ko.observable().extend({ required: true }),
 		date_placeholder : ko.observable(Globalize.format(new Date(), 'yyyy-MM-dd')),
-		receiptKind : ko.observable(""),
-		kindOfPayment : ko.observable(""),
+		receiptKind : ko.observable("").extend({ required: true }),
+		kindOfPayment : ko.observable("").extend({ required: true }),
 
 		addReceipt : function () {
 			var error = 0;
+			var errorMessage ="";
 			if (!viewModel.inputText()) {
-				DevExpress.ui.notify(Globalize.localize("nameIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("name") + "<br>";
 				error = 1;
 			}
 			if (!viewModel.inputAmount()) {
-				DevExpress.ui.notify(Globalize.localize("amountIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("amount") + "<br>";
 				error = 1;
 			}
 			if (!viewModel.inputDate()) {
-				DevExpress.ui.notify(Globalize.localize("dateIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("date") + "<br>";
 				error = 1;
 			}
 			if (viewModel.currency() == "") {
-				DevExpress.ui.notify(Globalize.localize("currencyIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("currency") + "<br>";
 				error = 1;
 			}
 			if (viewModel.receiptKind() == "") {
-				DevExpress.ui.notify(Globalize.localize("receiptKindIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("receiptKind") + "<br>";
 				error = 1;
 			}
 			if (viewModel.kindOfPayment() == "") {
-				DevExpress.ui.notify(Globalize.localize("kindOfPaymentIsRequired"), 'error', 3000);
+				errorMessage = errorMessage + "" + Globalize.localize("kindOfPayment") + "<br>";
 				error = 1;
+			}
+			if(error == 1) {
+			DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("errorMessage"));
 			}
 			if (error == 0) {
 				HRworksReceipt.localStoreReceipts.insert({
@@ -58,7 +55,7 @@ HRworksReceipt.addReceipt = function (params) {
 					currency : viewModel.currency(),
 					timestamp : Date()
 				}).done(function () {
-					HRworksReceipt.app.navigate('index', {
+					HRworksReceipt.app.navigate('home', {
 						direction : 'backward',
 						root : true
 					});
@@ -67,7 +64,7 @@ HRworksReceipt.addReceipt = function (params) {
 				});
 			}
 		},
-		viewShown : function (e) {
+		viewShowing : function (e) {
 			if (e.direction == "forward") {
 				//dump the values of the form items if the view is loaded from the cache
 				viewModel.inputText("");

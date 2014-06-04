@@ -25,30 +25,22 @@ $(function () {
 			key : "id",
 			immediate : true
 		});
-	HRworksReceipt.app = new DevExpress.framework.html.HtmlApplication({
-			namespace : HRworksReceipt,
-			navigationType : HRworksReceipt.config.navigationType,
-			navigation : HRworksReceipt.config.navigation
-		});
-
-	HRworksReceipt.app.router.register(":view/:id", {
-		view : "index",
-		id : undefined
-	});
-
 	HRworksReceipt.currenciesSource = new DevExpress.data.DataSource({
 			store : HRworksReceipt.localStoreCurrencies
 		});
 	HRworksReceipt.receiptKindsSource = new DevExpress.data.DataSource({
 			store : HRworksReceipt.localStoreReceiptKinds
 		});
-	HRworksReceipt.kindsOfPaymentSource = new DevExpress.data.DataSource({
+		HRworksReceipt.kindsOfPaymentSource = new DevExpress.data.DataSource({
 			store : HRworksReceipt.localStoreKindsOfPayment
 		});
-	HRworksReceipt.ds = new DevExpress.data.DataSource({
-			store : HRworksReceipt.localStoreReceipts
+	HRworksReceipt.app = new DevExpress.framework.html.HtmlApplication({
+			namespace : HRworksReceipt,
+			layoutSet: DevExpress.framework.html.layoutSets[HRworksReceipt.config.layoutSet],
+			navigation : HRworksReceipt.config.navigation
 		});
 
+	HRworksReceipt.app.router.register(":view/:id", { view: "home", id: undefined });
 	HRworksReceipt.app.navigate();
 
 });

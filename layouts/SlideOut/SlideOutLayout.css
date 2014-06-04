@@ -84,6 +84,13 @@
     height: 24px;
 }
 
+.dx-rtl .slideout-layout .navigation-list .dx-list .dx-list-item .dx-icon,
+.dx-rtl.slideout-layout .navigation-list .dx-list .dx-list-item .dx-icon {
+    float: right;
+    margin-right: 0;
+    margin-left: 15px;
+}
+
 
 /* iOS */
 .slideout-layout .view-footer {
@@ -91,15 +98,13 @@
 }
 
 /* iOS 6 */
-.dx-theme-ios.dx-version-major-5 .slideout-layout .navigation-list .dx-list,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .navigation-list .dx-list {
+.dx-theme-ios .slideout-layout .navigation-list .dx-list {
     background: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     min-height: 0;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .navigation-list .dx-list .dx-list-item,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .navigation-list .dx-list .dx-list-item {
+.dx-theme-ios .slideout-layout .navigation-list .dx-list .dx-list-item {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(0, 0, 0, 0.35);
     color: #E8EEF4;
@@ -107,91 +112,86 @@
     font-size: 14pt;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .navigation-list .dx-list .dx-list-item.dx-state-disabled,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .navigation-list .dx-list .dx-list-item.dx-state-disabled {
+.dx-theme-ios .slideout-layout .navigation-list .dx-list .dx-list-item.dx-state-disabled {
     opacity:0.6;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-toolbar-bottom.dx-toolbar,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-toolbar-bottom.dx-toolbar {
+.dx-theme-ios .slideout-layout .view-toolbar-bottom.dx-toolbar {
     background: transparent;
     border: none;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-toolbar-bottom,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-toolbar-bottom {
+.dx-theme-ios .slideout-layout .view-toolbar-bottom {
     margin-bottom: 10px;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-left,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-left {
+.dx-theme-ios .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-before {
     right: 0;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-left .dx-button,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-left .dx-button {
+.dx-theme-ios .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-before .dx-button {
     position: absolute;
     left: 10px;
     right: 10px;
 }
-.dx-theme-ios.dx-version-major-5 .slideout-layout .layout-header,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .layout-header {
+.dx-theme-ios .slideout-layout .layout-header {
     height: 43px;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .layout-content,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .layout-content {
+.dx-theme-ios .slideout-layout .layout-content {
     top: 43px;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-footer .dx-toolbar,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-footer .dx-toolbar {
+.dx-theme-ios .slideout-layout .view-footer .dx-toolbar {
     height: 57px;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-footer .dx-toolbar-center,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-footer .dx-toolbar-center {
+.dx-theme-ios .slideout-layout .view-footer .dx-toolbar-center {
     width: 100%;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-footer .dx-button,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-footer .dx-button {
+.dx-theme-ios .slideout-layout .view-footer .dx-button {
     width: 97%;
     overflow: visible;
     height: 40px;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-footer .dx-button .dx-button-content, 
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-footer .dx-button .dx-button-content {
+.dx-theme-ios .slideout-layout .view-footer .dx-button .dx-button-content {
     height: 44px;
     border-radius: 6px;
     width: 100%;
     box-sizing: border-box;
 }
 
-.dx-theme-ios.dx-version-major-5 .slideout-layout .view-footer .dx-button .dx-button-content .dx-button-text,
-.dx-theme-ios.dx-version-major-6 .slideout-layout .view-footer .dx-button .dx-button-content .dx-button-text {
+.dx-theme-ios .slideout-layout .view-footer .dx-button .dx-button-content .dx-button-text {
     font-size: 20px;
     line-height: 38px;
 }
 
 /* iOS7 */
-.dx-theme-ios.dx-version-major-7 .slideout-layout .navigation-list .dx-list {
+.dx-theme-ios7 .slideout-layout .navigation-list .dx-list {
     background: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     min-height: 0;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .navigation-list .dx-list .dx-list-item {
+.dx-theme-ios7 .slideout-layout .navigation-list .dx-list .dx-list-item {
     color: #000;
     font-size: 14px;
+	position: relative;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .navigation-list .dx-list .dx-list-item:after {
+.dx-theme-ios7 .slideout-layout .navigation-list .dx-list .dx-list-item:after {
     left: 49px;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .navigation-list .dx-list .dx-list-item:before {
+.dx-theme-ios7 .dx-rtl .slideout-layout .navigation-list .dx-list .dx-list-item:after,
+.dx-theme-ios7 .dx-rtl.slideout-layout .navigation-list .dx-list .dx-list-item:after {
+    right: 49px;
+    left: auto;
+}
+
+.dx-theme-ios7 .slideout-layout .navigation-list .dx-list .dx-list-item:before {
     content: ' ';
     display: block;
     width: 8px;
@@ -209,70 +209,87 @@
     margin-top: -6px;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .navigation-list .dx-list .dx-list-item .dx-icon {
+.dx-theme-ios7 .dx-rtl .slideout-layout .navigation-list .dx-list .dx-list-item:before,
+.dx-theme-ios7 .dx-rtl.slideout-layout .navigation-list .dx-list .dx-list-item:before {
+    -moz-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    transform: rotate(225deg);
+    right: auto;
+    left: 20px;
+}
+
+.dx-theme-ios7 .slideout-layout .navigation-list .dx-list .dx-list-item .dx-icon {
     margin-right: 10px;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .navigation-list .dx-list .dx-list-item.dx-state-active {
+.dx-theme-ios7 .dx-rtl .slideout-layout .navigation-list .dx-list .dx-list-item .dx-icon,
+.dx-theme-ios7 .dx-rtl.slideout-layout .navigation-list .dx-list .dx-list-item .dx-icon {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.dx-theme-ios7 .slideout-layout .navigation-list .dx-list .dx-list-item.dx-state-active {
     background: rgba(1,122,255,.2);
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .navigation-list .dx-list .dx-list-item.dx-state-disabled {
+.dx-theme-ios7 .slideout-layout .navigation-list .dx-list .dx-list-item.dx-state-disabled {
     opacity:0.6;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-toolbar-bottom.dx-toolbar {
+.dx-theme-ios7 .slideout-layout .view-toolbar-bottom.dx-toolbar {
     background: transparent;
     border: none;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-toolbar-bottom {
+.dx-theme-ios7 .slideout-layout .view-toolbar-bottom {
     margin-bottom: 10px;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-left {
+.dx-theme-ios7 .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-before {
     right: 0;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-left .dx-button {
+.dx-theme-ios7 .slideout-layout .view-toolbar-bottom.dx-toolbar .dx-toolbar-before .dx-button {
     position: absolute;
     left: 10px;
     right: 10px;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .layout-header.dx-toolbar {
+.dx-theme-ios7 .slideout-layout .layout-header.dx-toolbar {
     background: none;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .layout-header {
+.dx-theme-ios7 .slideout-layout .layout-header {
     height: 43px;
 }
-.dx-theme-ios.dx-version-major-7 .slideout-layout .layout-content {
+.dx-theme-ios7 .slideout-layout .layout-content {
     top: 44px;
     background-color: #EFEFF4;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-footer .dx-toolbar {
+.dx-theme-ios7 .slideout-layout .view-footer .dx-toolbar {
     height: 57px;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-footer .dx-toolbar-center {
+.dx-theme-ios7 .slideout-layout .view-footer .dx-toolbar-center {
     width: 100%;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-footer .dx-button {
+.dx-theme-ios7 .slideout-layout .view-footer .dx-button {
     width: 97%;
     overflow: visible;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-footer .dx-button .dx-button-content{
+.dx-theme-ios7 .slideout-layout .view-footer .dx-button .dx-button-content{
     height: 44px;
     border-radius: 6px;
     width: 100%;
     box-sizing: border-box;
 }
 
-.dx-theme-ios.dx-version-major-7 .slideout-layout .view-footer .dx-button .dx-button-content .dx-button-text {
+.dx-theme-ios7 .slideout-layout .view-footer .dx-button .dx-button-content .dx-button-text {
     font-size: 20px;
     line-height: 38px;
 }
@@ -352,9 +369,17 @@
 
 /* generic theme */
 .dx-theme-generic .slideout-layout .layout-header {
-    height: 46px;
+    height: 80px;
 }
 
 .dx-theme-generic .slideout-layout .layout-content {
-    top: 47px;
+    top: 80px;
+}
+
+.dx-theme-generic.dx-device-phone .slideout-layout .layout-header {
+    height: 50px;
+}
+
+.dx-theme-generic.dx-device-phone .slideout-layout .layout-content {
+    top: 50px;
 }

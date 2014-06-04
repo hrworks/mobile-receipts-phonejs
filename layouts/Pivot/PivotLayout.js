@@ -4,23 +4,25 @@
         ACTIVE_PIVOT_ITEM_SELECTOR = ".dx-pivot-item:not(.dx-pivot-item-hidden)",
         LAYOUT_FOOTER_SELECTOR = ".layout-footer";
     DX.framework.html.PivotLayoutController = DX.framework.html.DefaultLayoutController.inherit({
+        ctor: function(options) {
+            options = options || {};
+            options.name = options.name || "pivot";
+            this.callBase(options)
+        },
         init: function(options) {
             this.callBase(options)
         },
-        _getLayoutTemplateName: function() {
-            return "pivot"
-        },
         _createNavigation: function(navigationCommands) {
-            var self = this;
+            var that = this;
             this.$root = $("<div/>").addClass("pivot-layout").appendTo(this._$hiddenBag);
             this.$pivot = $("<div/>").appendTo(this.$root).dxPivot({itemRender: function(itemData, itemIndex, itemElement) {
-                    var emptyLayout = self._createEmptyLayout();
+                    var emptyLayout = that._createEmptyLayout();
                     emptyLayout.find(".layout-footer").remove();
                     emptyLayout.appendTo(itemElement)
                 }}).dxCommandContainer({id: 'global-navigation'});
-            this.$footer = self._createEmptyLayout().find(".layout-footer").insertAfter(this.$pivot);
+            this.$footer = that._createEmptyLayout().find(".layout-footer").insertAfter(this.$pivot);
             var container = this.$pivot.dxCommandContainer("instance");
-            this._commandManager._arrangeCommandsToContainers(navigationCommands, [container])
+            this._commandManager.renderCommandsToContainers(navigationCommands, [container])
         },
         _getRootElement: function() {
             return this.$root
@@ -35,6 +37,14 @@
             this._changeView(viewInfo);
             this._changeAppbar();
             return $.Deferred().resolve().promise()
+        },
+        _templateContextChangedHandler: function() {
+            $.each(this._visibleViews, $.proxy(function(index, viewInfo) {
+                var previousViewInfo = this._getPreviousViewInfo(viewInfo);
+                if (previousViewInfo)
+                    this._hideView(previousViewInfo)
+            }, this));
+            this.callBase()
         },
         _changeAppbar: function() {
             var $appbar = this.$footer.find(".dx-active-view " + TOOLBAR_BOTTOM_SELECTOR),
@@ -58,8 +68,9 @@
             this._changeAppbar()
         }
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "navbar",
+    var layoutSets = DX.framework.html.layoutSets;
+    layoutSets["navbar"] = layoutSets["navbar"] || [];
+    layoutSets["navbar"].push({
         platform: "win8",
         phone: true,
         root: true,

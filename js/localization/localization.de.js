@@ -17,6 +17,7 @@ Globalize.addCultureInfo("de", {messages: {
 		"receiptKindIsRequired": "Belegart nicht angegeben",
 		"kindOfPaymentIsRequired": "Zahlungsart nicht angegeben",
 		"currencyIsRequired": "Währung nicht angegeben",
+		"errorMessage": "Folgende Eingaben fehlen oder sind fehlerhaft:",
 		"Key_AppTitle": "HRworks - Belege"
 	}
 });

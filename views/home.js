@@ -1,4 +1,4 @@
-﻿HRworksReceipt.index = function (params) {
+﻿HRworksReceipt.home = function (params) {
 
 	var viewModel = {
 		ds : new DevExpress.data.DataSource({
@@ -14,7 +14,7 @@
 		map : function (item) {
 			return new localStore;
 		},
-		viewShown : function (e) {
+		viewShowing : function (e) {
 			if (e.direction == 'backward') {
 				viewModel.ds.load();
 			}

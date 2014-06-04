@@ -9,42 +9,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- This script is added by PhoneGap build -->
-    <!-- <script type="text/javascript" src="cordova.js"></script> -->
-    
+    <script type="text/javascript" src="cordova.js"></script>
+	
+    <link rel="stylesheet" type="text/css" href="css/dx.spa.css" />
+    <link rel="stylesheet" type="text/css" href="css/dx.common.css" />    
+    <link rel="dx-theme" data-theme="ios.default" href="css/dx.ios.default.css" />
+    <link rel="dx-theme" data-theme="ios7.default" href="css/dx.ios7.default.css" />
+    <link rel="dx-theme" data-theme="android.holo-dark" href="css/dx.android.holo-dark.css" data-active="false" />
+    <link rel="dx-theme" data-theme="android.holo-light" href="css/dx.android.holo-light.css" data-active="true" />
+    <link rel="dx-theme" data-theme="win8.black" href="css/dx.win8.black.css" data-active="true" />
+    <link rel="dx-theme" data-theme="win8.white" href="css/dx.win8.white.css" data-active="false" />
+    <link rel="dx-theme" data-theme="tizen.black" href="css/dx.tizen.black.css" data-active="false" />
+    <link rel="dx-theme" data-theme="tizen.white" href="css/dx.tizen.white.css" data-active="true" />
+    <link rel="dx-theme" data-theme="generic.light" href="css/dx.light.css" />
+    <link rel="dx-theme" data-theme="generic.dark" href="css/dx.dark.css" />
+
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
     <![endif]-->
     <!--[if gte IE 9]><!-->
-    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <!--<![endif]-->
-    
-    <script type="text/javascript" src="js/knockout-3.0.0.js"></script>
-    <script type="text/javascript" src="js/globalize.min.js"></script>
+    <script type="text/javascript" src="js/knockout-3.1.0.js"></script>
 
-    <script type="text/javascript" src="js/dx.phonejs.js"></script>
-    <!--
-    <script type="text/javascript" src="js/dx.phonejs.debug.js"></script>
-    -->
-        
-    <!--     
-    <script type="text/javascript" src="js/localization/dx.phonejs.ja.js"></script>
-    -->
-    
-    <link rel="stylesheet" type="text/css" href="css/dx.common.css" />
-    <link rel="stylesheet" type="text/css" href="css/dx.ios.default.css" />
-    <link rel="stylesheet" type="text/css" href="css/dx.android.holo-dark.css" />
-    <!--link rel="stylesheet" type="text/css" href="css/dx.android.holo-light.css" /-->
-    <link rel="stylesheet" type="text/css" href="css/dx.win8.black.css" />
-    <!--link rel="stylesheet" type="text/css" href="css/dx.win8.white.css" /-->
-    <link rel="stylesheet" type="text/css" href="css/dx.tizen.white.css" />
-    <!--link rel="stylesheet" type="text/css" href="css/dx.tizen.black.css" /-->
-    <link rel="stylesheet" type="text/css" href="css/dx.generic.light.css" />
-	
+    <script type="text/javascript" src="js/globalize.min.js"></script>
 	<!-- Localization -->
 	<script type="text/javascript" src="js/localization/dx.phonejs.de.js"></script>
 	<script type="text/javascript" src="js/localization/localization.default.js"></script>
 	<script type="text/javascript" src="js/localization/localization.de.js"></script>
 
+    <script type="text/javascript" src="js/dx.phonejs.debug.js"></script>
+	
     <!-- App -->
     <link rel="stylesheet" type="text/css" href="index.css" />
     <script type="text/javascript" src="index.js"></script>
@@ -53,6 +48,10 @@
 	<script type="text/javascript" src="js/userDataLocal.js"></script>
 
     <!-- Layouts -->
+    <script type="text/javascript" src="layouts/Empty/EmptyLayout.js"></script>
+    <link rel="stylesheet" type="text/css" href="layouts/Empty/EmptyLayout.css" />
+    <link rel="dx-template" type="text/html" href="layouts/Empty/EmptyLayout.html"/>
+
     <script type="text/javascript" src="layouts/Navbar/NavbarLayout.js"></script>
     <link rel="stylesheet" type="text/css" href="layouts/Navbar/NavbarLayout.css" />
     <link rel="dx-template" type="text/html" href="layouts/Navbar/NavbarLayout.html"/>
@@ -62,10 +61,11 @@
     <link rel="dx-template" type="text/html" href="layouts/Pivot/PivotLayout.html"/>
 
     <!-- App views -->
-    <link rel="stylesheet" type="text/css" href="views/index.css" />
-    <script type="text/javascript" src="views/index.js"></script>
-    <link rel="dx-template" type="text/html" href="views/index.html"/>
+    <link rel="stylesheet" type="text/css" href="views/home.css" />
+    <script type="text/javascript" src="views/home.js"></script>
+    <link rel="dx-template" type="text/html" href="views/home.html"/>
 
+	<link rel="stylesheet" type="text/css" href="views/addReceipt.css" />
 	<script type="text/javascript" src="views/addReceipt.js"></script>
     <link rel="dx-template" type="text/html" href="views/addReceipt.html"/>
 
@@ -75,6 +75,6 @@
     <link rel="dx-template" type="text/html" href="views/about.html"/>
 </head>
 <body>
-    <div class="dx-viewport"></div>
+    <div id="viewport" class="dx-viewport dx-ios-stripes"></div>
 </body>
 </html>

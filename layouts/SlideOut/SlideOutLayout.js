@@ -5,16 +5,18 @@
         NAVIGATION_MAX_WIDTH = 300,
         NAVIGATION_TOGGLE_DURATION = 400;
     DX.framework.html.SlideOutController = DX.framework.html.DefaultLayoutController.inherit({
-        _getLayoutTemplateName: function() {
-            return "slideout"
+        ctor: function(options) {
+            options = options || {};
+            options.name = options.name || "slideout";
+            this.callBase(options)
         },
         _createNavigation: function(navigationCommands) {
-            var self = this;
+            this.$slideOut = $("<div data-bind='dxSlideOut: {  menuItemTemplate: $(\"#slideOutMenuItemTemplate\") }'></div>").appendTo(this._$hiddenBag).dxCommandContainer({id: 'global-navigation'});
+            this._viewEngine._applyTemplate(this.$slideOut, this._layoutModel);
             this.callBase(navigationCommands);
-            this.$slideOut = $("<div/>").appendTo(this._$hiddenBag).dxSlideOut({menuItemTemplate: $("#slideOutMenuItemTemplate")}).dxCommandContainer({id: 'global-navigation'});
             this.slideOut = this.$slideOut.dxSlideOut("instance");
             var container = this.$slideOut.dxCommandContainer("instance");
-            this._commandManager._arrangeCommandsToContainers(navigationCommands, [container]);
+            this._commandManager.renderCommandsToContainers(navigationCommands, [container]);
             this.$slideOut.find(".dx-slideout-item-container").append(this._$mainLayout)
         },
         _getRootElement: function() {
@@ -34,14 +36,22 @@
             this._navigationManager.navigating.remove(this._navigatingHandler)
         },
         _onNavigating: function(args) {
-            var self = this;
+            var that = this;
             if (this.slideOut.option("menuVisible"))
                 args.navigateWhen.push(this._toggleNavigation().done(function() {
-                    self._disableTransitions = true
+                    that._disableTransitions = true
                 }))
         },
         _onViewShown: function(viewInfo) {
+            this._refreshVisibility();
             this._disableTransitions = false
+        },
+        _refreshVisibility: function() {
+            if (DX.devices.real().platform === "android") {
+                this.$slideOut.css("backface-visibility", "hidden");
+                this.$slideOut.css("backface-visibility");
+                this.$slideOut.css("backface-visibility", "visible")
+            }
         },
         _isPlaceholderEmpty: function(viewInfo) {
             var $markup = viewInfo.renderResult.$markup;
@@ -53,18 +63,18 @@
             return !backCommands.length
         },
         _onRenderComplete: function(viewInfo) {
-            var self = this;
-            self._initNavigation(viewInfo.renderResult.$markup);
-            if (self._isPlaceholderEmpty(viewInfo))
-                self._initNavigationButton(viewInfo.renderResult.$markup);
+            var that = this;
+            that._initNavigation(viewInfo.renderResult.$markup);
+            if (that._isPlaceholderEmpty(viewInfo))
+                that._initNavigationButton(viewInfo.renderResult.$markup);
             var $content = viewInfo.renderResult.$markup.find(".layout-content"),
                 $appbar = viewInfo.renderResult.$markup.find(".layout-toolbar-bottom"),
                 appbar = $appbar.data("dxToolbar");
             if (appbar) {
-                self._refreshAppbarVisibility(appbar, $content);
+                that._refreshAppbarVisibility(appbar, $content);
                 appbar.optionChanged.add(function(name, value) {
                     if (name === "items")
-                        self._refreshAppbarVisibility(appbar, $content)
+                        that._refreshAppbarVisibility(appbar, $content)
                 })
             }
         },
@@ -80,22 +90,21 @@
             appbar.option("visible", isAppbarNotEmpty)
         },
         _initNavigationButton: function($markup) {
-            var self = this,
+            var that = this,
                 $toolbar = $markup.find(".layout-toolbar"),
                 toolbar = $toolbar.data("dxToolbar");
             var showNavButton = function($markup, $navButtonItem) {
                     $navButtonItem = $navButtonItem || $toolbar.find(".nav-button-item");
                     $navButtonItem.show();
-                    $navButtonItem.find(".nav-button").data("dxButton").option("clickAction", $.proxy(self._toggleNavigation, self, $markup))
+                    $navButtonItem.find(".nav-button").data("dxButton").option("clickAction", $.proxy(that._toggleNavigation, that, $markup))
                 };
             showNavButton($markup);
             toolbar.option("itemRenderedAction", function(e) {
                 var data = e.itemData,
                     $element = e.itemElement;
                 if (data.template === "nav-button")
-                    $.proxy(showNavButton, self, $markup)()
-            });
-            toolbar.repaint()
+                    $.proxy(showNavButton, that, $markup)()
+            })
         },
         _initNavigation: function($markup) {
             this._isNavigationVisible = false
@@ -104,30 +113,27 @@
             return this.slideOut.toggleMenuVisibility()
         }
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "slideout",
+    var layoutSets = DX.framework.html.layoutSets;
+    layoutSets["slideout"] = layoutSets["slideout"] || [];
+    layoutSets["slideout"].push({
         platform: "ios",
         controller: new DX.framework.html.SlideOutController
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "slideout",
+    layoutSets["slideout"].push({
         platform: "android",
         controller: new DX.framework.html.SlideOutController
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "slideout",
+    layoutSets["slideout"].push({
         platform: "tizen",
         controller: new DX.framework.html.SlideOutController
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "slideout",
-        platform: "win8",
-        phone: true,
+    layoutSets["slideout"].push({
+        platform: "generic",
         controller: new DX.framework.html.SlideOutController
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "slideout",
-        platform: "generic",
+    layoutSets["slideout"].push({
+        platform: "win8",
+        phone: true,
         controller: new DX.framework.html.SlideOutController
     })
 })(jQuery, DevExpress);

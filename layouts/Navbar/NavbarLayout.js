@@ -9,52 +9,53 @@
         LAYOUT_FOOTER_SELECTOR = ".layout-footer",
         ACTIVE_TOOLBAR_SELECTOR = ".dx-active-view .dx-toolbar";
     DX.framework.html.NavBarController = DX.framework.html.DefaultLayoutController.inherit({
-        _getLayoutTemplateName: function() {
-            return "navbar"
+        ctor: function(options) {
+            options = options || {};
+            options.name = options.name || "navbar";
+            this.callBase(options)
         },
         _createNavigation: function(navigationCommands) {
             this.callBase(navigationCommands);
             var $navbar = this._$mainLayout.find(".navbar-container");
             if ($navbar.length && navigationCommands) {
                 var container = $navbar.dxCommandContainer("instance");
-                this._commandManager._arrangeCommandsToContainers(navigationCommands, [container]);
+                this._commandManager.renderCommandsToContainers(navigationCommands, [container]);
                 this._$mainLayout.addClass(HAS_NAVBAR_CLASS)
             }
         },
         _showViewImpl: function(viewInfo) {
-            var self = this;
-            return self.callBase.apply(self, arguments).done(function() {
-                    var $toolbar = self._$mainLayout.find(LAYOUT_FOOTER_SELECTOR).find(ACTIVE_TOOLBAR_SELECTOR),
+            var that = this;
+            return that.callBase.apply(that, arguments).done(function() {
+                    var $toolbar = that._$mainLayout.find(LAYOUT_FOOTER_SELECTOR).find(ACTIVE_TOOLBAR_SELECTOR),
                         isToolbarEmpty = !$toolbar.length || !$toolbar.dxToolbar("instance").option("visible");
-                    self._$mainLayout.toggleClass(HAS_TOOLBAR_CLASS, !isToolbarEmpty)
+                    that._$mainLayout.toggleClass(HAS_TOOLBAR_CLASS, !isToolbarEmpty)
                 })
         }
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "navbar",
+    var layoutSets = DX.framework.html.layoutSets;
+    layoutSets["navbar"] = layoutSets["navbar"] || [];
+    layoutSets["navbar"].push({
         platform: "ios",
         controller: new DX.framework.html.NavBarController
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "navbar",
+    layoutSets["navbar"].push({
         platform: "android",
         controller: new DX.framework.html.NavBarController
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "navbar",
+    layoutSets["navbar"].push({
         platform: "tizen",
         controller: new DX.framework.html.NavBarController
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "navbar",
+    layoutSets["navbar"].push({
         platform: "generic",
         controller: new DX.framework.html.NavBarController
     });
-    DX.framework.html.layoutControllers.push({
-        navigationType: "split",
+    layoutSets["split"] = layoutSets["split"] || [];
+    layoutSets["split"].push({
         platform: "win8",
         phone: false,
         root: true,
+        pane: "master",
         controller: new DX.framework.html.NavBarController
     })
 })(jQuery, DevExpress);

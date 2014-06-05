@@ -36,8 +36,65 @@ $(function () {
 		});
 	HRworksReceipt.app = new DevExpress.framework.html.HtmlApplication({
 			namespace : HRworksReceipt,
-			layoutSet: DevExpress.framework.html.layoutSets[HRworksReceipt.config.layoutSet],
-			navigation : HRworksReceipt.config.navigation
+			layoutSet: DevExpress.framework.html.layoutSets["simple"],
+			commandMapping: {
+                "ios-header-toolbar": {
+                    commands: [
+                        {
+                            id: "synchronise",
+                            location: "before"
+                        }
+                    ]
+                },
+                "android-simple-toolbar": {
+                    commands: [
+                        {
+                            id: "synchronise",
+                            location: "before"
+                        },
+						{
+                            id: "settings",
+                            location: "menu"
+                        },
+						{
+                            id: "info",
+                            location: "menu"
+                        },
+						{
+                            id: "feedback",
+                            location: "menu"
+                        }
+                    ]
+                },
+                "win8-phone-appbar": {
+                    defaults: {
+                        "showText": false,
+                        "showIcon": true
+                    },
+                    commands: [
+                        {
+                            id: "add",
+                            icon: "plus"
+                        }
+                    ]
+                },
+                "tizen-simple-toolbar": {
+                    commands: [
+                        {
+                            id: "add",
+                            location: "left"
+                        }
+                    ]
+                },
+                "generic-header-toolbar": {
+                    commands: [
+                        {
+                            id: "synchronise",
+                            location: "left"
+                        }
+                    ]
+                },
+            }
 		});
 
 	HRworksReceipt.app.router.register(":view/:id", { view: "home", id: undefined });

@@ -7,7 +7,6 @@ HRworksReceipt.addReceipt = function (params) {
 		}
 		return date.getFullYear() + '' + pad(date.getMonth() + 1) + '' + pad(date.getDate());
 	}
-
 	var viewModel = {
 
 		// create DataSource
@@ -77,8 +76,8 @@ HRworksReceipt.addReceipt = function (params) {
 				//dump the values of the form items if the view is loaded from the cache
 				viewModel.inputText("");
 				viewModel.inputAmount("");
-				viewModel.currency("");
-				viewModel.inputDate("");
+				viewModel.currency("EUR");
+				viewModel.inputDate();
 				viewModel.receiptKind("");
 				viewModel.kindOfPayment("");
 			}

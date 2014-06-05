@@ -42,7 +42,16 @@ $(function () {
 
 	HRworksReceipt.app.router.register(":view/:id", { view: "home", id: undefined });
 	HRworksReceipt.app.navigate();
+	
 
 });
+	   function onViewShown(args) {
+        var viewInfo = args.viewInfo;
+        if (viewInfo.model.hideNavigationButton)
+            viewInfo.renderResult.$markup.find(".nav-button-item").remove();
+
+        currentBackAction = viewInfo.model.backButtonDown;
+    }
+
 Globalize.culture(navigator.language || navigator.browserLanguage);
 document.title = Globalize.localize("Key_AppTitle");

@@ -4,23 +4,21 @@
 		<div class="content" data-bind="dxScrollView: { }">
 			<div class="dx-fieldset">
 				<div class="dx-field">
-					<div class="dx-field-label">@name:</div>
+					<div class="dx-field-label">@name</div>
 					<div class="dx-field-value">
 						<div id="txtInputText" data-bind="dxTextBox: { value: inputText, placeholder: '@name' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@amount</div>
-					<div class="dx-field-value">
-						<div id="numbInputAmount" data-bind="dxTextBox: { value: inputAmount, mode: 'number', placeholder: '@amount' }"></div>
+					<div class="dx-field-label" style="width: 20%; position: relative; float: left;">@amount</div>
+					<div class="dx-field-value" style="width: 30%; position: relative; float: left;">
+						<div  id="numbInputAmount" data-bind="dxTextBox: { value: inputAmount, mode: 'number', placeholder: '@amount' }"></div>
+
 					</div>
-				</div>
-				<div class="dx-field">
-					<div class="dx-field-label">@currency</div>
-					<div class="dx-field-value">
-						<div id="selectCurrency" class="dx-field-value" data-bind="dxSelectBox: {
+					<div class="dx-field-value"  style="width: 50%; position: relative; float: right;">
+						<div id="selectCurrency" data-bind="dxSelectBox: {
 							dataSource: currenciesDataSource,
-							displayExpr: 'symbol',
+							displayExpr: 'description',
 							valueExpr: 'symbol',
 							value: currency
 							}">
@@ -36,7 +34,7 @@
 				<div class="dx-field">
 					<div class="dx-field-label">@receiptKind</div>
 					<div class="dx-field-value">
-						<div id="selectReceiptKind" class="dx-field-value" data-bind="dxSelectBox: {
+						<div id="selectReceiptKind" data-bind="dxSelectBox: {
 							dataSource: receiptKindsDataSource,
 							displayExpr: 'description',
 							valueExpr: 'id',
@@ -48,7 +46,7 @@
 				<div class="dx-field">
 					<div class="dx-field-label">@kindOfPayment</div>
 					<div class="dx-field-value">
-						<div id="selectKindOfPayment" class="dx-field-value" data-bind="dxSelectBox: {
+						<div id="selectKindOfPayment" data-bind="dxSelectBox: {
 							dataSource: kindsOfPaymentsDataSource,
 							displayExpr: 'description',
 							valueExpr: 'id',

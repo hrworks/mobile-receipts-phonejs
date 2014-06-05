@@ -23,7 +23,6 @@ HRworksReceipt.addReceipt = function (params) {
 		kindOfPayment : ko.observable(""),
 
 		addReceipt : function () {
-			var formatedDate = dateToYYYYMMDD(viewModel.inputDate());
 			var error = 0;
 			var errorMessage ="";
 			if (!viewModel.inputText()) {
@@ -51,12 +50,13 @@ HRworksReceipt.addReceipt = function (params) {
 				error = 1;
 			}
 			if(error == 1) {
-			DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("errorMessage"));
+			DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("validationErrorMessage"));
 			}
 			if (error == 0) {
+				var formatedDate = dateToYYYYMMDD(viewModel.inputDate());
 				HRworksReceipt.localStoreReceipts.insert({
 					text : viewModel.inputText(),
-					amount : viewModel.inputAmount(),
+					amount : Number(viewModel.inputAmount()),
 					date : formatedDate,
 					receiptKind : viewModel.receiptKind(),
 					kindOfPayment : viewModel.kindOfPayment(),

@@ -8,9 +8,6 @@
 				desc : true
 			}
 		}),
-		searchQuery : ko.observable().extend({
-			throttle : 500
-		}),
 		map : function (item) {
 			return new localStore;
 		},
@@ -20,10 +17,6 @@
 			}
 		},
 	};
-	viewModel.searchQuery.subscribe(function (value) {
-		viewModel.ds.filter("text", "contains", value);
-		viewModel.ds.load();
-	});
 	getReceiptKind = function (receiptKindId) {
 		for (var i = 0; i < HRworksReceipt.db.receiptKinds.length; i++) {
 			if (HRworksReceipt.db.receiptKinds[i].id == receiptKindId) {

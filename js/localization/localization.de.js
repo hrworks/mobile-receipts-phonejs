@@ -18,8 +18,12 @@ Globalize.addCultureInfo("de", {
 		"receiptKindIsRequired" : "Belegart nicht angegeben",
 		"kindOfPaymentIsRequired" : "Zahlungsart nicht angegeben",
 		"currencyIsRequired" : "Währung nicht angegeben",
-		"errorMessage" : "Folgende Eingaben fehlen oder sind fehlerhaft:",
+		"validationErrorMessage" : "Folgende Eingaben fehlen oder sind fehlerhaft:",
 		"saveButton" : "Speichern",
+		"copyReceipt" : "Beleg Kopieren",
+		"copyReceiptConfirmQuestion" : "Beleg kopieren?",
+		"copyReceiptConfirmText" : "Der Beleg wird gespeichert und kopiert.<br> Soll dieser Vorgang durchgeführt werden?",
+		"copyReceiptErrorMessage" : "<br>Der Beleg wurde nicht kopiert.",
 		"Key_AppTitle" : "HRworks - Belege"
 	}
 });

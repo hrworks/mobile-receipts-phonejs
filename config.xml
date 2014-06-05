@@ -17,7 +17,7 @@
     </author>
 
     <preference name="phonegap-version" value="3.3.0" />
-    <preference name="orientation" value="portrait" />
+    <preference name="orientation" value="default" />
     <preference name="target-device" value="handset" />
     <preference name="auto-hide-splash-screen" value="false" />
     <preference name="permissions" value="none"/>

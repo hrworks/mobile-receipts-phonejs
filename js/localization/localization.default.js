@@ -18,8 +18,12 @@ Globalize.addCultureInfo("default", {
 		"receiptKindIsRequired" : "Receipt Kind is required",
 		"kindOfPaymentIsRequired" : "Kind of Payment is required",
 		"currencyIsRequired" : "Currency is required",
-		"errorMessage" : "The following entries are missing or incorrect:",
+		"validationErrorMessage" : "The following entries are missing or incorrect:",
 		"saveButton" : "Save",
+		"copyReceipt" : "Copy Receipt",
+		"copyReceiptConfirmQuestion" : "Copy Receipt?",
+		"copyReceiptConfirmText" : "The present receipt will be saved and copyed.<br> Are you sure?",
+		"copyReceiptErrorMessage" : "<br>The receipt was not copied.",
 		"Key_AppTitle" : "HRworks Receipts"
 	}
 });

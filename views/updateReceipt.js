@@ -84,12 +84,12 @@
 				error = 1;
 			}
 			if (error == 1) {
-				DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("errorMessage"));
+				DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("validationErrorMessage"));
 			}
 			if (error == 0) {
 				HRworksReceipt.localStoreReceipts.update(params.id, {
 					text : viewModel.inputText(),
-					amount : viewModel.inputAmount(),
+					amount : Number(viewModel.inputAmount()),
 					date : dateToYYYYMMDD(viewModel.inputDate()),
 					receiptKind : viewModel.receiptKind(),
 					kindOfPayment : viewModel.kindOfPayment(),
@@ -109,7 +109,7 @@
 			viewModel.actionSheetVisible(true);
 		},
 		clickDoubleReceipt : function () {
-			var result = DevExpress.ui.dialog.confirm("Der Beleg wird gespeichert und dupliziert.<br> Soll dieser Vorgang durchgeführt werden?", "Beleg duplizieren?");
+			var result = DevExpress.ui.dialog.confirm(Globalize.localize("copyReceiptConfirmText"), Globalize.localize("copyReceiptConfirmQuestion"));
 			result.done(function (dialogResult) {
 				var error = 0;
 				var errorMessage = "";
@@ -126,14 +126,14 @@
 					error = 1;
 				}
 				if (error == 1) {
-					errorMessage = errorMessage + " Der Beleg wurde nicht dupliziert!";
-					DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("errorMessage"));
+					errorMessage = errorMessage + Globalize.localize("copyReceiptErrorMessage");
+					DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("validationErrorMessage"));
 				}
 				if (error == 0) {
 					if (dialogResult) {
 						HRworksReceipt.localStoreReceipts.update(params.id, {
 							text : viewModel.inputText(),
-							amount : viewModel.inputAmount(),
+							amount : Number(viewModel.inputAmount()),
 							date : dateToYYYYMMDD(viewModel.inputDate()),
 							receiptKind : viewModel.receiptKind(),
 							kindOfPayment : viewModel.kindOfPayment(),
@@ -142,17 +142,16 @@
 						}).done(function () {
 							HRworksReceipt.localStoreReceipts.insert({
 								text : viewModel.inputText(),
-								amount : viewModel.inputAmount(),
+								amount : Number(viewModel.inputAmount()),
 								date : dateToYYYYMMDD(viewModel.inputDate()),
 								receiptKind : viewModel.receiptKind(),
 								kindOfPayment : viewModel.kindOfPayment(),
 								currency : viewModel.currency(),
 								timestamp : Date()
 							}).done(function () {
-								DevExpress.ui.dialog.alert("Der Beleg wurde dupliziert");
 							})
 						}).fail(function () {
-							DevExpress.ui.dialog.alert("Fehler beim speichern des Belegs");
+							DevExpress.ui.dialog.alert("Error!");
 						});
 					}
 				}

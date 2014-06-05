@@ -1,4 +1,4 @@
-﻿<div data-options="dxView : { name: 'updateReceipt', title: '@receipt' } " >
+﻿<div data-options="dxView : { name: 'settings', title: '@settings' } " >
 	<div data-bind="dxCommand: { title: '@saveButton', id: 'create', action: updateReceipt}"></div>
 	<div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } ">
 		<div class="content" data-bind="dxScrollView: { }">
@@ -7,21 +7,6 @@
 					<div class="dx-field-label">@name:</div>
 					<div class="dx-field-value">
 						<div id="txtInputText" data-bind="dxTextBox: { value: inputText, placeholder: '@name' }"></div>
-					</div>
-				</div>
-				<div class="dx-field">
-					<div class="dx-field-label" style="width: 20%; position: relative; float: left;">@amount</div>
-					<div class="dx-field-value" style="width: 30%; position: relative; float: left;">
-						<div id="numbInputAmount" data-bind="dxTextBox: { value: inputAmount, mode: 'number', placeholder: '@amount' }"></div>
-					</div>
-					<div class="dx-field-value" style="width: 50%; position: relative; float: right;">
-						<div id="selectCurrency" data-bind="dxSelectBox: {
-							dataSource: currenciesSource,
-							displayExpr: 'description',
-							valueExpr: 'symbol',
-							value: currency
-							}">
-						</div>
 					</div>
 				</div>
 				<div class="dx-field">

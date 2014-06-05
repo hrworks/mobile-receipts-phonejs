@@ -7,6 +7,7 @@ HRworksReceipt.addReceipt = function (params) {
 		}
 		return date.getFullYear() + '' + pad(date.getMonth() + 1) + '' + pad(date.getDate());
 	}
+	var today = dateToYYYYMMDD(new Date());
 	var viewModel = {
 
 		// create DataSource
@@ -17,7 +18,7 @@ HRworksReceipt.addReceipt = function (params) {
 		inputText : ko.observable(),
 		inputAmount : ko.observable(),
 		currency : ko.observable("EUR"),
-		inputDate : ko.observable(),
+		inputDate : ko.observable(new Date(today.slice(0, 4),today.slice(4, 6) - 1,today.slice(6, 8))),
 		receiptKind : ko.observable(""),
 		kindOfPayment : ko.observable(""),
 
@@ -77,7 +78,7 @@ HRworksReceipt.addReceipt = function (params) {
 				viewModel.inputText("");
 				viewModel.inputAmount("");
 				viewModel.currency("EUR");
-				viewModel.inputDate();
+				viewModel.inputDate(new Date(today.slice(0, 4),today.slice(4, 6) - 1,today.slice(6, 8)));
 				viewModel.receiptKind("");
 				viewModel.kindOfPayment("");
 			}

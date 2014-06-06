@@ -16,6 +16,16 @@
 				viewModel.ds.load();
 			}
 		},
+		loadPanel: {
+            visible: ko.observable(false),
+            startLoading: function() {
+                viewModel.loadPanel.visible(true);
+                setTimeout(viewModel.loadPanel.finishLoading, 3000);
+            },
+            finishLoading: function() {
+                viewModel.loadPanel.visible(false);
+            }
+        }
 	};
 	getReceiptKind = function (receiptKindId) {
 		for (var i = 0; i < HRworksReceipt.db.receiptKinds.length; i++) {

@@ -1,5 +1,8 @@
 Globalize.addCultureInfo("de", {
 	messages : {
+		"settings" : "Einstellungen",
+		"infos" : "Informationen",
+		"feedback" : "Feedback",
 		"receipts" : "Belege",
 		"receipt" : "Beleg",
 		"newReceipt" : "Neuer Beleg",
@@ -11,6 +14,7 @@ Globalize.addCultureInfo("de", {
 		"receiptKind" : "Belegart",
 		"kindOfPayment" : "Zahlungsart",
 		"delete" : "Löschen",
+		"send" : "Senden",
 		"deleteThisReceipt" : "Diesen Beleg löschen",
 		"nameIsRequired" : "Bezeichung nicht angegeben",
 		"amountIsRequired" : "Betrag nicht angegeben",
@@ -24,6 +28,14 @@ Globalize.addCultureInfo("de", {
 		"copyReceiptConfirmQuestion" : "Beleg kopieren?",
 		"copyReceiptConfirmText" : "Der Beleg wird gespeichert und kopiert.<br> Soll dieser Vorgang durchgeführt werden?",
 		"copyReceiptErrorMessage" : "<br>Der Beleg wurde nicht kopiert.",
+		"infosText" : "Anlegen, Ändern und Löschen von Belegen online oder offline.Synchronisierung mit Sammelbelegen (Menü Mitarbeiter/Reisekosten/Sammelbelege) mit Push & Sync. Anmeldung mit Firmenkennung, Benutzerkennung und Mobiles Passwort (Menü Mitarbeiter/Stammdaten/Mobile). Support/Feedback: per E-Mail an mobile.support@hrworks.de",
+		"infosHeading": "Wichtige Informationen",
+		"companyid": "Firmenkennung",
+		"userid" : "Benutzerkennung",
+		"mobilePassword" : "Mobiles Passwort",
+		"settingsText" : "Verwenden Sie die Firmen-& Benutzerkennung, mit der Sie sich unter www.hrworks.de anmelden. Das mobile Passwort finden Sie in HRworks im Menü Mitarbeiter/Stammdaten/Mobile.",
+		"server" : "Server",
+		"feedbackText" : "Was möchten Sie uns mitteilen?",
 		"Key_AppTitle" : "HRworks - Belege"
 	}
 });

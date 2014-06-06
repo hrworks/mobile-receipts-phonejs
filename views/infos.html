@@ -1,0 +1,13 @@
+﻿<div data-options="dxView : { name: 'infos', title: '@infos' } " >
+	<div data-bind="dxCommand: { id: 'receipts', title: '@receipts', action: HRworksReceipt.goToReceipts }"></div>
+	
+	<div data-bind="dxCommand: { id: 'settings', title: '@settings', action: HRworksReceipt.goToSettings }"></div>
+	<div data-bind="dxCommand: { id: 'info', title: '@infos',  action: HRworksReceipt.goToInfos }"></div>
+	<div data-bind="dxCommand: { id: 'feedback', title: '@feedback',  action: HRworksReceipt.goToFeedback }"></div>
+    <div  data-options="dxContent : { targetPlaceholder: 'content' } " >
+        <div data-bind="dxScrollView: {}">
+			<h3>@infosHeading</h3>
+			@infosText
+		</div>
+    </div>
+</div>

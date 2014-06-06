@@ -1,14 +1,16 @@
 ﻿<div data-options="dxView : { name: 'home', title: '@receipts' } " >
 	<div data-bind="dxCommand: { id: 'create', title: 'Create', icon: 'plus', action: '#addReceipt'}"></div>
-	<div data-bind="dxCommand: { id: 'synchronise', icon: 'refresh'}"></div>
-	<div data-bind="dxCommand: { id: 'settings', title: 'Einstellungen'}"></div>
-	<div data-bind="dxCommand: { id: 'info', title: 'Informationen'}"></div>
-	<div data-bind="dxCommand: { id: 'feedback', title: 'Bewertung'}"></div>
+	<div data-bind="dxCommand: { id: 'synchronise', icon: 'refresh', action: loadPanel.startLoading}"></div>
 
-    <div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >
-		<div data-bind="dxList: { dataSource: ds} ">
-            <div data-options="dxTemplate : { name: 'item' }" data-bind="dxAction: '#updateReceipt/{guid}'" class="list-item">
-               <div class="left">	
+	<div data-bind="dxCommand: { id: 'settings', title: '@settings', action: HRworksReceipt.goToSettings }"></div>
+	<div data-bind="dxCommand: { id: 'info', title: '@infos',  action: HRworksReceipt.goToInfos }"></div>
+	<div data-bind="dxCommand: { id: 'feedback', title: '@feedback',  action: HRworksReceipt.goToFeedback }"></div>
+
+    <div data-options="dxContent : { targetPlaceholder: 'content' } " >
+		<div data-bind="dxLoadPanel: { message: 'Daten werden synchronisiert', visible: loadPanel.visible }"></div>
+		<div data-bind="dxList: { dataSource: ds} ">	
+            <div data-options="dxTemplate : { name: 'item' }" data-bind="dxAction: '#updateReceipt/{guid}'">
+			   <div class="left">	
 					<p><b data-bind="text: text"></b></p>
 					<p data-bind="text: getReceiptKindDescription(receiptKind)"></p>
 				</div>

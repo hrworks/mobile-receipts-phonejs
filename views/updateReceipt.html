@@ -1,5 +1,9 @@
 ﻿<div data-options="dxView : { name: 'updateReceipt', title: '@receipt' } " >
 	<div data-bind="dxCommand: { title: '@saveButton', id: 'create', action: updateReceipt}"></div>
+	
+	<div data-bind="dxCommand: { id: 'settings', title: '@settings', action: HRworksReceipt.goToSettings }"></div>
+	<div data-bind="dxCommand: { id: 'info', title: '@infos',  action: HRworksReceipt.goToInfos }"></div>
+	<div data-bind="dxCommand: { id: 'feedback', title: '@feedback',  action: HRworksReceipt.goToFeedback }"></div>
 	<div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } ">
 		<div class="content" data-bind="dxScrollView: { }">
 			<div class="dx-fieldset">

@@ -1,7 +1,9 @@
 ﻿/* Put css styles for home view here */
-.home-view p {
-	padding: 5px;
+
+.dx-theme-generic .simple-layout .layout-content {
+    top: 80px;
 }
+
 .left {
 	font-size:14px;
 	width: 50%;

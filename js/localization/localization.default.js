@@ -1,5 +1,8 @@
 Globalize.addCultureInfo("default", {
 	messages : {
+		"settings" : "Settings",
+		"infos" : "Informations",
+		"feedback" : "Feedback",
 		"receipts" : "Receipts",
 		"receipt" : "Receipt",
 		"newReceipt" : "New Receipt",
@@ -11,6 +14,7 @@ Globalize.addCultureInfo("default", {
 		"receiptKind" : "Receipt Kind",
 		"kindOfPayment" : "Kind of Payment",
 		"delete" : "Delete",
+		"send" : "Send",
 		"deleteThisReceipt" : "Delete this Receipt",
 		"nameIsRequired" : "Receiptname is required",
 		"amountIsRequired" : "Amount is required",
@@ -24,6 +28,14 @@ Globalize.addCultureInfo("default", {
 		"copyReceiptConfirmQuestion" : "Copy Receipt?",
 		"copyReceiptConfirmText" : "The present receipt will be saved and copyed.<br> Are you sure?",
 		"copyReceiptErrorMessage" : "<br>The receipt was not copied.",
+		"infosText" : "Dummytext",
+		"infosHeading": "Informations",
+		"companyid": "Companyid",
+		"userid" : "Userid",
+		"mobilePassword" : "Mobile Password",
+		"settingsText" : "Dummy Text",
+		"server" : "Server",
+		"feedbackText" : "Was möchten Sie uns mitteilen?",
 		"Key_AppTitle" : "HRworks Receipts"
 	}
 });

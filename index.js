@@ -5,6 +5,18 @@ $(function () {
 	// Uncomment the line below to disable platform-specific look and feel and to use the Generic theme for all devices
 	// DevExpress.devices.current({ platform: "generic" });
 
+	HRworksReceipt.goToReceipts = function() {
+		HRworksReceipt.app.navigate('home', { root: true });
+	};
+	HRworksReceipt.goToSettings = function() {
+		HRworksReceipt.app.navigate('settings', { root: true });
+	};
+	HRworksReceipt.goToInfos = function() {
+		HRworksReceipt.app.navigate('infos', { root: true });
+	};
+	HRworksReceipt.goToFeedback = function() {
+		HRworksReceipt.app.navigate('feedback', { root: true });
+	};
 	HRworksReceipt.localStoreReceipts = new DevExpress.data.LocalStore({
 			name : "receipts",
 			key : "guid",
@@ -43,6 +55,22 @@ $(function () {
                         {
                             id: "synchronise",
                             location: "before"
+                        },
+						{
+                            id: "settings",
+                            location: "menu"
+                        },
+						{
+                            id: "info",
+                            location: "menu"
+                        },
+						{
+                            id: "feedback",
+                            location: "menu"
+                        },
+						{
+                            id: "receipts",
+                            location: "before"
                         }
                     ]
                 },
@@ -63,6 +91,10 @@ $(function () {
 						{
                             id: "feedback",
                             location: "menu"
+                        },
+						{
+                            id: "receipts",
+                            location: "before"
                         }
                     ]
                 },
@@ -73,16 +105,48 @@ $(function () {
                     },
                     commands: [
                         {
-                            id: "add",
-                            icon: "plus"
+                            id: "synchronise",
+                            location: "before"
+                        },
+						{
+                            id: "settings",
+                            location: "menu"
+                        },
+						{
+                            id: "info",
+                            location: "menu"
+                        },
+						{
+                            id: "feedback",
+                            location: "menu"
+                        },
+						{
+                            id: "receipts",
+                            location: "before"
                         }
                     ]
                 },
                 "tizen-simple-toolbar": {
                     commands: [
                         {
-                            id: "add",
-                            location: "left"
+                            id: "synchronise",
+                            location: "before"
+                        },
+						{
+                            id: "settings",
+                            location: "menu"
+                        },
+						{
+                            id: "info",
+                            location: "menu"
+                        },
+						{
+                            id: "feedback",
+                            location: "menu"
+                        },
+						{
+                            id: "receipts",
+                            location: "before"
                         }
                     ]
                 },
@@ -90,7 +154,23 @@ $(function () {
                     commands: [
                         {
                             id: "synchronise",
-                            location: "left"
+                            location: "before"
+                        },
+						{
+                            id: "settings",
+                            location: "menu"
+                        },
+						{
+                            id: "info",
+                            location: "menu"
+                        },
+						{
+                            id: "feedback",
+                            location: "menu"
+                        },
+						{
+                            id: "receipts",
+                            location: "before"
                         }
                     ]
                 },

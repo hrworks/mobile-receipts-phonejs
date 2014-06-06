@@ -1,0 +1,23 @@
+﻿<div data-options="dxView : { name: 'feedback', title: '@feedback' } " >
+	<div data-bind="dxCommand: { title: '@send', id: 'create'}"></div>
+	<div data-bind="dxCommand: { id: 'receipts', title: '@receipts', action: HRworksReceipt.goToReceipts }"></div>
+	
+	<div data-bind="dxCommand: { id: 'settings', title: '@settings', action: HRworksReceipt.goToSettings }"></div>
+	<div data-bind="dxCommand: { id: 'info', title: '@infos',  action: HRworksReceipt.goToInfos }"></div>
+	<div data-bind="dxCommand: { id: 'feedback', title: '@feedback',  action: HRworksReceipt.goToFeedback }"></div>
+
+	<div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } ">
+		<div class="content" data-bind="dxScrollView: { }">
+			<div class="dx-fieldset">
+				<p>@feedbackText</p>
+				<div data-bind="dxSelectBox: {
+						dataSource: subjectSource,
+						displayExpr: 'name',
+						valueExpr: 'name',
+						}">
+				</div>
+				<div class="textArea" data-bind="dxTextArea: { height: 100 }"></div>
+			</div>	
+		</div>
+	</div>
+</div>

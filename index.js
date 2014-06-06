@@ -202,8 +202,6 @@ $(function () {
 
 	HRworksReceipt.app.router.register(":view/:id", { view: "home", id: undefined });
 	HRworksReceipt.app.navigate();
-	
-	document.addEventListener("deviceready", function() { navigator.splashscreen.hide(); });
 });
 	   function onViewShown(args) {
         var viewInfo = args.viewInfo;

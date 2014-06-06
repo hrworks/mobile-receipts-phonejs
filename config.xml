@@ -21,4 +21,5 @@
     <preference name="target-device" value="handset" />
     <preference name="auto-hide-splash-screen" value="false" />
     <preference name="permissions" value="none"/>
+	<preference name="android-targetSdkVersion" value="14" /> 
 </widget>

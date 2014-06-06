@@ -1,6 +1,6 @@
 ﻿<div data-options="dxView : { name: 'settings', title: 'Einstellungen' } " >
-	<div data-bind="dxCommand: { title: '@saveButton', id: 'create'}"></div>
-	<div data-bind="dxCommand: { id: 'receipts', title: '@receipts', action: HRworksReceipt.goToReceipts }"></div>
+	<div data-bind="dxCommand: { id: 'save'}"></div>
+	<div data-bind="dxCommand: { id: 'receipts', action: HRworksReceipt.goToReceipts }"></div>
 
 	<div data-bind="dxCommand: { id: 'settings', title: '@settings', action: HRworksReceipt.goToSettings }"></div>
 	<div data-bind="dxCommand: { id: 'info', title: '@infos',  action: HRworksReceipt.goToInfos }"></div>
@@ -9,21 +9,18 @@
 		<div class="content" data-bind="dxScrollView: { }">
 			<div class="dx-fieldset">
 				<div class="dx-field">
-					<div class="dx-field-label">@companyid</div>
-					<div class="dx-field-value">
+					<div class="dx-field-value" style="width:100%">
 						<div data-bind="dxTextBox: { value: '', placeholder: '@companyid' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@userid</div>
-					<div class="dx-field-value">
+					<div class="dx-field-value" style="width:100%">
 						<div data-bind="dxTextBox: { value: '', placeholder: '@userid' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@mobilePassword</div>
-					<div class="dx-field-value">
-						<div data-bind="dxTextBox: { value: '', placeholder: '@mobilePassword' }"></div>
+					<div class="dx-field-value" style="width:100%">
+						<div data-bind="dxTextBox: { value: '', placeholder: '@mobilePassword'}"></div>
 					</div>
 				</div>
 			</div>

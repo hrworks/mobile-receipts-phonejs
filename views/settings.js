@@ -4,7 +4,7 @@
 			for(var i= 0; i < 100; i++) {
 				HRworksReceipt.localStoreReceipts.insert({
 					text : 'Receipt' + i,
-					amount : '111',
+					amount : 111,
 					date : '20120304',
 					receiptKind : '1',
 					kindOfPayment : '1',

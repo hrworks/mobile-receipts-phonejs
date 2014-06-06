@@ -70,7 +70,13 @@ $(function () {
                         },
 						{
                             id: "receipts",
-                            location: "before"
+                            location: "before",
+							title: Globalize.localize("receipts")
+                        },
+						{
+                            id: "save",
+                            location: "after",
+							title: Globalize.localize("saveButton")
                         }
                     ]
                 },
@@ -94,7 +100,13 @@ $(function () {
                         },
 						{
                             id: "receipts",
-                            location: "before"
+                            location: "before",
+							title: Globalize.localize("receipts")
+                        },
+						{
+                            id: "save",
+                            location: "after",
+							title: Globalize.localize("saveButton")
                         }
                     ]
                 },
@@ -123,6 +135,11 @@ $(function () {
 						{
                             id: "receipts",
                             location: "before"
+                        },
+						{
+                            id: "save",
+                            location: "after",
+							icon: 'save'
                         }
                     ]
                 },
@@ -170,7 +187,13 @@ $(function () {
                         },
 						{
                             id: "receipts",
-                            location: "before"
+                            location: "before",
+							icon:'home'
+                        },
+						{
+                            id: "save",
+                            location: "after",
+							icon: 'save'
                         }
                     ]
                 },

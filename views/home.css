@@ -4,6 +4,9 @@
     top: 80px;
 }
 
+.dx-theme-ios7 .dx-list-item:after {
+margin-top: 50px;
+}
 .left {
 	font-size:14px;
 	width: 50%;
@@ -24,4 +27,10 @@
     margin: 10px 0;
     padding: 0;
     width: 100%;
+}
+.formItemLeft {
+	width: 35%;
+}
+.formItemRight {
+	width: 65% !important; 
 }

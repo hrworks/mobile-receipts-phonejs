@@ -1,5 +1,5 @@
 ﻿<div data-options="dxView : { name: 'updateReceipt', title: '@receipt' } " >
-	<div data-bind="dxCommand: { title: '@saveButton', id: 'create', action: updateReceipt}"></div>
+	<div data-bind="dxCommand: { id: 'save', action: updateReceipt}"></div>
 	
 	<div data-bind="dxCommand: { id: 'settings', title: '@settings', action: HRworksReceipt.goToSettings }"></div>
 	<div data-bind="dxCommand: { id: 'info', title: '@infos',  action: HRworksReceipt.goToInfos }"></div>
@@ -8,17 +8,17 @@
 		<div class="content" data-bind="dxScrollView: { }">
 			<div class="dx-fieldset">
 				<div class="dx-field">
-					<div class="dx-field-label">@name:</div>
-					<div class="dx-field-value">
+					<div class="dx-field-label formItemLeft">@name</div>
+					<div class="dx-field-value formItemRight">
 						<div id="txtInputText" data-bind="dxTextBox: { value: inputText, placeholder: '@name' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label" style="width: 20%; position: relative; float: left;">@amount</div>
-					<div class="dx-field-value" style="width: 30%; position: relative; float: left;">
+					<div class="dx-field-label" style="width: 35%; position: relative; float: left;">@amount</div>
+					<div class="dx-field-value" style="width: 25%; position: relative; float: left;">
 						<div id="numbInputAmount" data-bind="dxTextBox: { value: inputAmount, mode: 'number', placeholder: '@amount' }"></div>
 					</div>
-					<div class="dx-field-value" style="width: 50%; position: relative; float: right;">
+					<div class="dx-field-value" style="width: 40%; position: relative; float: right;">
 						<div id="selectCurrency" data-bind="dxSelectBox: {
 							dataSource: currenciesSource,
 							displayExpr: 'description',
@@ -29,14 +29,14 @@
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@date</div>
-					<div class="dx-field-value">
+					<div class="dx-field-label formItemLeft">@date</div>
+					<div class="dx-field-value formItemRight">
 						<div id="dateInputDate" data-bind="dxDateBox: { value: inputDate, format: 'date' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@receiptKind</div>
-					<div class="dx-field-value">
+					<div class="dx-field-label formItemLeft">@receiptKind</div>
+					<div class="dx-field-value formItemRight">
 						<div id="selectReceiptKind" data-bind="dxSelectBox: {
 							dataSource: receiptKindsSource,
 							displayExpr: 'description',
@@ -47,8 +47,8 @@
 					</div>
 				</div>
 				<div class="dx-field">
-					<div class="dx-field-label">@kindOfPayment</div>
-					<div class="dx-field-value">
+					<div class="dx-field-label formItemLeft">@kindOfPayment</div>
+					<div class="dx-field-value formItemRight">
 						<div id="selectKindOfPayment" data-bind="dxSelectBox: {
 							dataSource: kindsOfPaymentSource,
 							displayExpr: 'description',

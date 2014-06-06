@@ -22,4 +22,11 @@
     <preference name="auto-hide-splash-screen" value="false" />
     <preference name="permissions" value="none"/>
 	<preference name="android-targetSdkVersion" value="14" /> 
+	
+    <!-- Android icons -->
+    <icon src="res/drawable-hdpi/ic_launcher.png"  gap:platform="android" gap:density="hdpi" />
+    <icon src="res/drawable-mdpi/ic_launcher.png"  gap:platform="android" gap:density="mdpi" />
+    <icon src="res/drawable-xhdpi/ic_launcher.png"  gap:platform="android" gap:density="xdpi" />
+    <icon src="res/drawable-xxhdpi/ic_launcher.png"  gap:platform="android" gap:density="xxhdpi" />
+	<icon src="res/drawable-xxxhdpi/ic_launcher.png"  gap:platform="android" gap:density="xxxhdpi" />
 </widget>

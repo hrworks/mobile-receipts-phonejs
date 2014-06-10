@@ -16,7 +16,7 @@ HRworksReceipt.addReceipt = function (params) {
 		kindsOfPaymentsDataSource : HRworksReceipt.kindsOfPaymentSource,
 		// create value variables
 		inputText : ko.observable(),
-		inputAmount : ko.observable(),
+		inputAmount : ko.observable("0"),
 		currency : ko.observable("EUR"),
 		inputDate : ko.observable(new Date(today.slice(0, 4),today.slice(4, 6) - 1,today.slice(6, 8))),
 		receiptKind : ko.observable(""),

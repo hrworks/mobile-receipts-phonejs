@@ -10,13 +10,13 @@
 				<div class="dx-field">
 					<div class="dx-field-label formItemLeft">@name</div>
 					<div class="dx-field-value formItemRight">
-						<div id="txtInputText" data-bind="dxTextBox: { value: inputText, placeholder: '@name' }"></div>
+						<div id="txtInputText" data-bind="dxTextBox: { value: inputText, placeholder: '@name', maxLength: 25 }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
 					<div class="dx-field-label" style="width: 35%; position: relative; float: left;">@amount</div>
 					<div class="dx-field-value" style="width: 25%; position: relative; float: left;">
-						<div  id="numbInputAmount" data-bind="dxTextBox: { value: inputAmount, mode: 'number', placeholder: '@amount' }"></div>
+						<div id="numbInputAmount" class="numberBox" data-bind="dxNumberBox: { value: inputAmount, showSpinButtons: true, placeholder: '@amount', min: 0, max: 100000 }"></div>
 
 					</div>
 					<div class="dx-field-value"  style="width: 40%; position: relative; float: right;">

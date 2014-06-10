@@ -71,12 +71,17 @@ $(function () {
 						{
                             id: "receipts",
                             location: "before",
-							title: Globalize.localize("receipts")
+							icon: "arrowleft"
                         },
 						{
                             id: "save",
                             location: "after",
 							title: Globalize.localize("saveButton")
+                        },
+						{
+                            id: "send",
+                            location: "after",
+							title: Globalize.localize("send")
                         }
                     ]
                 },
@@ -101,12 +106,17 @@ $(function () {
 						{
                             id: "receipts",
                             location: "before",
-							title: Globalize.localize("receipts")
+							icon: "home"
                         },
 						{
                             id: "save",
                             location: "after",
-							title: Globalize.localize("saveButton")
+							icon: "save"
+                        },
+						{
+                            id: "send",
+                            location: "after",
+							icon: "email"
                         }
                     ]
                 },

@@ -9,16 +9,22 @@ margin-top: 50px;
 }
 .left {
 	font-size:14px;
-	width: 50%;
+	width: 70%;
 	position: relative;
 	float: left;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
 }
 .right {
 	font-size:14px;
 	text-align:right;
-	width: 50%;
+	width: 30%;
 	position: relative;
 	float: right;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis; 
 }
 .largeButton  {
     margin: 10px;

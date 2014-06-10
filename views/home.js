@@ -4,7 +4,7 @@
 		ds : new DevExpress.data.DataSource({
 			store : HRworksReceipt.localStoreReceipts,
 			sort : {
-				getter : "date",
+				getter : "timestamp",
 				desc : true
 			}
 		}),

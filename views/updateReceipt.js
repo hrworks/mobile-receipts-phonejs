@@ -28,6 +28,7 @@
 			}
 		}
 	}
+	currencyCheckbox = ko.observable(false);
 	var viewModel = {
 		actionSheetVisible : ko.observable(false),
 		actionSheetData : [{
@@ -38,8 +39,21 @@
 		],
 
 		// create DataSource
-		currenciesSource : new DevExpress.data.DataSource({
-			store : HRworksReceipt.localStoreCurrencies
+		getCurrenciesSource : function() {
+			if (currencyCheckbox() == true) {
+				return new DevExpress.data.DataSource({
+					store : HRworksReceipt.localStoreCurrencies
+				})
+			} else {
+				return new DevExpress.data.DataSource({
+					store : HRworksReceipt.localStoreCurrencies,
+					filter : [[ "isPreferred" , "=", true ], "or", [ "symbol" , "=", viewModel.currency()]]
+				})
+			}
+		},
+		currenciesSourceFav : new DevExpress.data.DataSource({
+			store : HRworksReceipt.localStoreCurrencies,
+			filter : [ "isPreferred" , "=", true ]
 		}),
 		receiptKindsSource : new DevExpress.data.DataSource({
 			store : HRworksReceipt.localStoreReceiptKinds
@@ -48,6 +62,7 @@
 			store : HRworksReceipt.localStoreKindsOfPayment
 		}),
 
+		
 		// create value variables
 		inputText : ko.observable(getReceiptById(params.id).text),
 		inputAmount : ko.observable(getReceiptById(params.id).amount),

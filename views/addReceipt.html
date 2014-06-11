@@ -1,6 +1,5 @@
-<div data-options="dxView : { name: 'addReceipt', title: '@receipt' } " >
+<div data-options="dxView : { name: 'addReceipt', title: '@receipt' } ">
 	<div data-bind="dxCommand: { id: 'save', action: addReceipt}"></div>
-	
 	<div data-bind="dxCommand: { id: 'settings', title: '@settings', action: HRworksReceipt.goToSettings }"></div>
 	<div data-bind="dxCommand: { id: 'info', title: '@infos',  action: HRworksReceipt.goToInfos }"></div>
 	<div data-bind="dxCommand: { id: 'feedback', title: '@feedback',  action: HRworksReceipt.goToFeedback }"></div>
@@ -15,18 +14,27 @@
 				</div>
 				<div class="dx-field">
 					<div class="dx-field-label" style="width: 35%; position: relative; float: left;">@amount</div>
-					<div class="dx-field-value" style="width: 25%; position: relative; float: left;">
-						<div id="numbInputAmount" class="numberBox" data-bind="dxNumberBox: { value: inputAmount, showSpinButtons: true, placeholder: '0', min: 0, max: 100000 }"></div>
-
+					<div class="dx-field-value" style="width: 23%; position: relative; float: left;">
+						<div id="numbInputAmount" class="numberBox" data-bind="dxNumberBox: { value: inputAmount, placeholder: '0', min: 0}"></div>
 					</div>
-					<div class="dx-field-value"  style="width: 40%; position: relative; float: right;">
-						<div id="selectCurrency" data-bind="dxSelectBox: {
-							dataSource: currenciesDataSource,
-							displayExpr: 'description',
-							valueExpr: 'symbol',
-							value: currency
+					<div class="dx-field-value"  style="width: 30%; position: relative; float: left;">
+						<div id="selectCurrency" data-bind="dxLookup: { 
+								fullScreen: true,
+								title: '@currency', 
+								dataSource: getCurrenciesSource(), 
+								searchEnabled: false,
+								valueExpr: 'symbol',
+								value: currency, 
+								itemTemplate: 'stateItem',
+								displayExpr: 'symbol',
 							}">
+							<div data-options="dxTemplate:{ name:'stateItem' }">
+								<span data-bind="text: description"></span>
+							</div>
 						</div>
+					</div>
+					<div class="dx-field-value"  style="width: 12%; position: relative; float: left;">
+						<div data-bind="dxCheckBox: { checked: currencyCheckbox }"></div>
 					</div>
 				</div>
 				<div class="dx-field">

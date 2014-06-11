@@ -8,15 +8,28 @@ HRworksReceipt.addReceipt = function (params) {
 		return date.getFullYear() + '' + pad(date.getMonth() + 1) + '' + pad(date.getDate());
 	}
 	var today = dateToYYYYMMDD(new Date());
+	currencyCheckbox = ko.observable(false);
 	var viewModel = {
 
 		// create DataSource
+		getCurrenciesSource : function() {
+			if (currencyCheckbox() == true) {
+				return new DevExpress.data.DataSource({
+					store : HRworksReceipt.localStoreCurrencies
+				})
+			} else {
+				return new DevExpress.data.DataSource({
+					store : HRworksReceipt.localStoreCurrencies,
+					filter : [[ "isPreferred" , "=", true ], "or", [ "symbol" , "=", viewModel.currency()]]
+				})
+			}
+		},
 		currenciesDataSource : HRworksReceipt.currenciesSource,
 		receiptKindsDataSource : HRworksReceipt.receiptKindsSource,
 		kindsOfPaymentsDataSource : HRworksReceipt.kindsOfPaymentSource,
 		// create value variables
 		inputText : ko.observable(),
-		inputAmount : ko.observable("0"),
+		inputAmount : ko.observable(0),
 		currency : ko.observable("EUR"),
 		inputDate : ko.observable(new Date(today.slice(0, 4),today.slice(4, 6) - 1,today.slice(6, 8))),
 		receiptKind : ko.observable(""),
@@ -76,7 +89,7 @@ HRworksReceipt.addReceipt = function (params) {
 			if (e.direction == "forward") {
 				//dump the values of the form items if the view is loaded from the cache
 				viewModel.inputText("");
-				viewModel.inputAmount("");
+				viewModel.inputAmount(0);
 				viewModel.currency("EUR");
 				viewModel.inputDate(new Date(today.slice(0, 4),today.slice(4, 6) - 1,today.slice(6, 8)));
 				viewModel.receiptKind("");

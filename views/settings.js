@@ -1,5 +1,8 @@
 ﻿HRworksReceipt.settings = function (params) {
 	var viewModel = {
+		dellReceipts: function() {
+			HRworksReceipt.localStoreReceipts.clear();
+		},
 		exampleReceipts: function() {
 			for(var i= 0; i < 100; i++) {
 				HRworksReceipt.localStoreReceipts.insert({

@@ -14,6 +14,7 @@ Globalize.addCultureInfo("default", {
 		"receiptKind" : "Receipt Kind",
 		"kindOfPayment" : "Kind of Payment",
 		"delete" : "Delete",
+		"deleteReceipt" : "Delete receipt",
 		"send" : "Send",
 		"deleteThisReceipt" : "Delete this Receipt",
 		"nameIsRequired" : "Receiptname is required",

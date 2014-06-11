@@ -1,31 +1,43 @@
 ﻿<div data-options="dxView : { name: 'updateReceipt', title: '@receipt' } " >
 	<div data-bind="dxCommand: { id: 'save', action: updateReceipt}"></div>
-	
+
+	<div data-bind="dxCommand: { id: 'delete', type: 'danger', action: clickRemoveReceipt }"></div>
+	<div data-bind="dxCommand: { id: 'copy',  action: clickDoubleReceipt }"></div>	
 	<div data-bind="dxCommand: { id: 'settings', title: '@settings', action: HRworksReceipt.goToSettings }"></div>
 	<div data-bind="dxCommand: { id: 'info', title: '@infos',  action: HRworksReceipt.goToInfos }"></div>
 	<div data-bind="dxCommand: { id: 'feedback', title: '@feedback',  action: HRworksReceipt.goToFeedback }"></div>
-	<div class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } ">
+	<div data-options="dxContent : { targetPlaceholder: 'content' } ">
 		<div class="content" data-bind="dxScrollView: { }">
 			<div class="dx-fieldset">
 				<div class="dx-field">
 					<div class="dx-field-label formItemLeft">@name</div>
 					<div class="dx-field-value formItemRight">
-						<div id="txtInputText" data-bind="dxTextBox: { value: inputText, placeholder: '@name', maxLength: 30 }"></div>
+						<div id="txtInputText" data-bind="dxTextBox: { value: inputText, placeholder: '@name' }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
 					<div class="dx-field-label" style="width: 35%; position: relative; float: left;">@amount</div>
-					<div class="dx-field-value" style="width: 25%; position: relative; float: left;">
-						<div id="numbInputAmount" class="numberBox" data-bind="dxNumberBox: { value: inputAmount, showSpinButtons: true, placeholder: '0', min: 0, max: 100000 }"></div>
+					<div class="dx-field-value" style="width: 30%; position: relative; float: left;">
+						<div id="numbInputAmount" class="numberBox" data-bind="dxNumberBox: { value: inputAmount, placeholder: '0', min: 0}"></div>
 					</div>
-					<div class="dx-field-value" style="width: 40%; position: relative; float: right;">
-						<div id="selectCurrency" data-bind="dxSelectBox: {
-							dataSource: currenciesSource,
-							displayExpr: 'description',
-							valueExpr: 'symbol',
-							value: currency
+					<div class="dx-field-value"  style="width: 25%; position: relative; float: left;">
+						<div id="selectCurrency" data-bind="dxLookup: { 
+								fullScreen: true,
+								title: '@currency', 
+								dataSource: getCurrenciesSource(), 
+								searchEnabled: false,
+								valueExpr: 'symbol',
+								value: currency, 
+								itemTemplate: 'stateItem',
+								displayExpr: 'symbol',
 							}">
+							<div data-options="dxTemplate:{ name:'stateItem' }">
+								<span data-bind="text: description"></span>
+							</div>
 						</div>
+					</div>
+					<div class="dx-field-value"  style="width: 10%; position: relative; float: left;">
+						<div data-bind="dxCheckBox: { checked: currencyCheckbox }"></div>
 					</div>
 				</div>
 				<div class="dx-field">
@@ -59,13 +71,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="largeButton">
-				 <div data-bind="dxButton: { text: '@delete', type: 'danger', clickAction: clickRemoveReceipt }"></div>
-			</div>
-			<div class="largeButton">
-				 <div data-bind="dxButton: { text: '@copyReceipt', clickAction: clickDoubleReceipt }"></div>
-			</div>
 			<div data-bind="dxActionSheet: { title: '@deleteThisReceipt?', dataSource: actionSheetData, visible: actionSheetVisible }"></div>
+				<div class="home-view-footer" data-options="dxContentPlaceholder : { name: 'view-footer' }"></div>
 		</div>
 	</div>
 </div>

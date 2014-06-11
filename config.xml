@@ -21,7 +21,7 @@
     <preference name="target-device" value="handset" />
     <preference name="auto-hide-splash-screen" value="false" />
     <preference name="permissions" value="none"/>
-	<preference name="android-targetSdkVersion" value="14" /> 
+	<preference name="android-targetSdkVersion" value="15" /> 
 	
     <!-- Android icons -->
     <icon src="res/drawable-hdpi/ic_launcher.png"  gap:platform="android" gap:density="hdpi" />

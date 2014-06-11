@@ -82,23 +82,9 @@ $(function () {
                             id: "send",
                             location: "after",
 							title: Globalize.localize("send")
-                        },
-						{
-                            id: "copy",
-                            location: "menu",
-							title: Globalize.localize("copyReceipt")
                         }
                     ]
                 },
-				"ios-view-footer": {
-                    commands: [
-					{
-                            id: "delete",
-                            location: "center",
-							title: Globalize.localize("deleteReceipt")
-                        }
-					]
-				},
                 "android-simple-toolbar": {
                     commands: [
                         {
@@ -120,7 +106,7 @@ $(function () {
 						{
                             id: "receipts",
                             location: "before",
-							icon: "arrowleft"
+							icon: "home"
                         },
 						{
                             id: "save",
@@ -131,16 +117,6 @@ $(function () {
                             id: "send",
                             location: "after",
 							icon: "email"
-                        },
-						{
-                            id: "delete",
-                            location: "menu",
-							title: Globalize.localize("deleteReceipt")
-                        },
-						{
-                            id: "copy",
-                            location: "menu",
-							title: Globalize.localize("copyReceipt")
                         }
                     ]
                 },

@@ -4,7 +4,7 @@
 			HRworksReceipt.localStoreReceipts.clear();
 		},
 		exampleReceipts: function() {
-			for(var i= 0; i < 100; i++) {
+			for(var i= 0; i < 26; i++) {
 				HRworksReceipt.localStoreReceipts.insert({
 					text : 'Receipt' + i,
 					amount : 111,

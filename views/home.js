@@ -12,12 +12,8 @@
 			return new localStore;
 		},
 		viewShowing : function (e) {
-			if (e.direction == 'backward') {
-				viewModel.ds.load();
-			}
-			if (typeof e.direction == 'undefined') {
-				viewModel.ds.load();
-			}
+			viewModel.ds.pageIndex(0);
+			viewModel.ds.load();
 		},
 		loadPanel: {
             visible: ko.observable(false),

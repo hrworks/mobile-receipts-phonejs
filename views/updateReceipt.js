@@ -51,10 +51,6 @@
 				})
 			}
 		},
-		currenciesSourceFav : new DevExpress.data.DataSource({
-			store : HRworksReceipt.localStoreCurrencies,
-			filter : [ "isPreferred" , "=", true ]
-		}),
 		receiptKindsSource : new DevExpress.data.DataSource({
 			store : HRworksReceipt.localStoreReceiptKinds
 		}),
@@ -163,7 +159,6 @@
 								kindOfPayment : viewModel.kindOfPayment(),
 								currency : viewModel.currency(),
 								timestamp : Date()
-							}).done(function () {
 							})
 						}).fail(function () {
 							DevExpress.ui.dialog.alert("Error!");

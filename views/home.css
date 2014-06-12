@@ -3,9 +3,8 @@
 .dx-theme-generic .simple-layout .layout-content {
     top: 80px;
 }
-
-.dx-theme-ios7 .dx-list-item:after {
-margin-top: 50px;
+.dx-theme-ios7 .dx-list-item-content:after{
+	margin-top: 50px;
 }
 .left {
 	font-size:14px;

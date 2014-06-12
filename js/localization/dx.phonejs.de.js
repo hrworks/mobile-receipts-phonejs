@@ -31,5 +31,6 @@ Globalize.addCultureInfo("de", {messages: {
         "dxScrollView-refreshingText": "Aktualisiere...",
         "dxScrollView-reachBottomText": "Laden...",
         "dxSwitch-onText": "EIN",
-        "dxSwitch-offText": "AUS"
+        "dxSwitch-offText": "AUS",
+		"dxDateBox-simulatedDataPickerTitleDate": "Datum wählen"
     }});

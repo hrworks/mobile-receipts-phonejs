@@ -8,7 +8,7 @@
 
     <div data-options="dxContent : { targetPlaceholder: 'content' } " >
 		<div data-bind="dxLoadPanel: { message: 'Daten werden synchronisiert', visible: loadPanel.visible }"></div>
-		<div data-bind="dxList: { dataSource: ds, pullRefreshEnabled: true }">	
+		<div data-bind="dxList: { dataSource: ds }">	
             <div data-options="dxTemplate : { name: 'item' }" data-bind="dxAction: '#updateReceipt/{guid}'">
 			   <div class="left">	
 					<p><b data-bind="text: text"></b></p>

@@ -41,9 +41,12 @@
 		// create DataSource
 		getCurrenciesSource : function() {
 			if (currencyCheckbox() == true) {
-				return new DevExpress.data.DataSource({
+				currenciesAll = new DevExpress.data.DataSource({
 					store : HRworksReceipt.localStoreCurrencies
-				})
+				});
+				console.log("1");
+				console.log(currenciesAll.items());
+				return currenciesAll;
 			} else {
 				return new DevExpress.data.DataSource({
 					store : HRworksReceipt.localStoreCurrencies,
@@ -95,7 +98,9 @@
 				error = 1;
 			}
 			if (error == 1) {
-				DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("validationErrorMessage"));
+				window.setTimeout(function() {
+					DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("validationErrorMessage"))}
+				, 300);
 			}
 			if (error == 0) {
 				HRworksReceipt.localStoreReceipts.update(params.id, {

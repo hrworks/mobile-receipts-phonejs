@@ -63,7 +63,9 @@ HRworksReceipt.addReceipt = function (params) {
 				error = 1;
 			}
 			if(error == 1) {
-			DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("validationErrorMessage"));
+			window.setTimeout(function() {
+					DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("validationErrorMessage"))}
+				, 200);
 			}
 			if (error == 0) {
 				var formatedDate = dateToYYYYMMDD(viewModel.inputDate());

@@ -100,7 +100,7 @@
 			if (error == 1) {
 				window.setTimeout(function() {
 					DevExpress.ui.dialog.alert(errorMessage, Globalize.localize("validationErrorMessage"))}
-				, 300);
+				, 200);
 			}
 			if (error == 0) {
 				HRworksReceipt.localStoreReceipts.update(params.id, {
